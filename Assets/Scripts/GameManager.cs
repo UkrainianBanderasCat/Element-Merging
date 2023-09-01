@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public WorldElement selectedElement;
+    public WorldElement hoveredElement;
 
     public List<Element> elements;
     public List<Recipe> recipes;
@@ -25,6 +26,12 @@ public class GameManager : MonoBehaviour
     public string elementNameDisplayText;
     public bool hoveringOverElement;
     private bool mergeSucessScreenActive;
+
+    public Vector3 elementNameDisplayTextOffset;
+
+    public AudioClip newElementSound;
+    public AudioClip pickupSound;
+    public AudioClip dropSound;
 
     public GameManager()
     {
@@ -52,6 +59,7 @@ public class GameManager : MonoBehaviour
                 elementName.text = recipe.GetRecipeOutputElement().GetName();
                 elementSpriteDisplay.sprite = recipe.GetRecipeOutputElement().GetSprite();
                 mergeSucessScreenActive = true;
+                AudioSource.PlayClipAtPoint(newElementSound, new Vector2(0f, 0f));
                 break;
             }
         }
@@ -67,16 +75,27 @@ public class GameManager : MonoBehaviour
                 mergeSucessScreenActive = false;
             }
         }
+
         if(hoveringOverElement && !mergeSucessScreenActive)
         {
-            elementNameDisplay.transform.localPosition = Vector3.Lerp(elementNameDisplay.transform.localPosition,
-                new Vector3(0.0f, -478.86f), Time.deltaTime * 20f);
+            Vector3 hoveredElementPosition = hoveredElement.gameObject.transform.position;
+            elementNameDisplay.transform.position = hoveredElementPosition + elementNameDisplayTextOffset;
+
+            //--Fix animation for text--
+            //elementNameDisplay.transform.position = Vector3.Lerp(hoveredElementPosition,
+            //    hoveredElementPosition + elementNameDisplayTextOffset, Time.deltaTime * 20f);
         }
+
         else
         {
-            elementNameDisplay.transform.localPosition = Vector3.Lerp(elementNameDisplay.transform.localPosition,
-                new Vector3(0.0f, -598.86f), Time.deltaTime * 20f);
+            elementNameDisplay.transform.position = new Vector3(0f, -100f);
+
+            //--Fix animation for text--
+            //elementNameDisplay.transform.localPosition = Vector3.Lerp(elementNameDisplay.transform.localPosition,
+            //    new Vector3(0.0f, -598.86f), Time.deltaTime * 20f);
         }
+
+
         elementNameDisplay.text = elementNameDisplayText;
     }
 

@@ -58,6 +58,8 @@ public class WorldElement : MonoBehaviour
         hovering = true;
         GameManager.instance.hoveringOverElement = true;
         GameManager.instance.elementNameDisplayText = element.GetName();
+        GameManager.instance.hoveredElement = this;
+
         if (GameManager.instance.selectedElement == null)
         {
             GetComponent<SpriteRenderer>().sortingOrder = 1000;
@@ -69,6 +71,7 @@ public class WorldElement : MonoBehaviour
         GameManager.instance.hoveringOverElement = false;
         GetComponent<SpriteRenderer>().sortingOrder = 0;
         GameManager.instance.selectedElement = null;
+        GameManager.instance.hoveredElement = null;
     }
     private void OnMouseDown()
     {

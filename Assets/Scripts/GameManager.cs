@@ -68,12 +68,7 @@ public class GameManager : MonoBehaviour
                 mergeSucessScreenActive = true;
 
                 AudioSource.PlayClipAtPoint(newElementSound, new Vector2(0f, 0f));
-                break;
-            }
-
-            else
-            {
-                AudioSource.PlayClipAtPoint(existingElementSound, new Vector2(0f, 0f), 0.4f);
+                return;
             }
         }
     }

@@ -17,3 +17,43 @@ An experimental game Element Merging by Lime Inc.
 12.Furnace + Raw Iron = Iron Ingot
 13.Plank + Iron = Advanced Tools
 ```
+## ToDo list:
+
+### ToDo
+- [ ] Save system
+  - [ ] Save created elements
+  - [ ] Save achivements
+  - [ ] Save elements position
+
+- [ ] Multiple elements in output
+
+- [ ] Fix bug with elements collision
+
+- [ ] Create new elements
+  - [ ] Log
+  - [ ] Fire
+  - [ ] Water
+  - [ ] Tools
+  - [ ] Stone
+  - [ ] Campfire
+  - [ ] Charcoal
+  - [ ] Furnance
+  - [ ] Iron ore
+  - [ ] Raw Iron
+  - [ ] Iron Ingot
+  - [ ] Plank
+
+- [ ] Add Main Menu
+  - [ ] Play
+  - [ ] Achivements
+  - [ ] Elements
+  - [ ] Settings
+  - [ ] Credits
+
+- [ ] Add UI
+  - [ ] Volume control
+  - [ ] Exit to Main Menu
+
+### In progress
+
+### Completed

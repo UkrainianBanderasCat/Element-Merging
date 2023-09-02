@@ -54,6 +54,8 @@ An experimental game Element Merging by Lime Inc.
   - [ ] Volume control
   - [ ] Exit to Main Menu
 
+- [ ] Add modding feature
+
 ### In progress
 
 ### Completed

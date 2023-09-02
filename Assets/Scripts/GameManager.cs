@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager instance;
+    public static GameManager instance;  
 
     public WorldElement selectedElement;
     public WorldElement hoveredElement;
 
+    public UnityAction NewMergedElement;
     public List<Element> elements;
     public List<Recipe> recipes;
 
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI elementName;
     [SerializeField] private Image elementSpriteDisplay;
     [SerializeField] private TextMeshProUGUI elementNameDisplay;
+
 
     public string elementNameDisplayText;
     public bool hoveringOverElement;
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 mergeSucessScreen.GetComponent<Animator>().SetTrigger("Hide");
                 mergeSucessScreenActive = false;
+                NewMergedElement.Invoke();
             }
         }
 

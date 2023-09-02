@@ -78,6 +78,7 @@ public class WorldElement : MonoBehaviour
         dragging = true;
         dragDelta = (Vector2)transform.position - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         previousPosition = transform.position;
+        AudioSource.PlayClipAtPoint(GameManager.instance.pickupSound, new Vector2(0f, 0f), 0.3f);
     }
     private void OnMouseUp()
     {
@@ -89,6 +90,8 @@ public class WorldElement : MonoBehaviour
             GameManager.instance.MergeElements(element, collidingWorldElement.GetElement());
             collidingWorldElement = null;
         }
+
+        AudioSource.PlayClipAtPoint(GameManager.instance.dropSound, new Vector2(0f, 0f), 0.3f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

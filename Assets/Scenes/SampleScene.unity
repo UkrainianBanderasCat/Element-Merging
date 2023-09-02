@@ -391,8 +391,9 @@ MonoBehaviour:
   hoveringOverElement: 0
   elementNameDisplayTextOffset: {x: 0, y: -1.2, z: 0}
   newElementSound: {fileID: 8300000, guid: e5cc0ca0c41fbc44a82f7a02f7c56f8e, type: 3}
-  pickupSound: {fileID: 8300000, guid: 0071a21dc624c8940ab3e42d7d23f733, type: 3}
-  dropSound: {fileID: 8300000, guid: 0071a21dc624c8940ab3e42d7d23f733, type: 3}
+  pickupSound: {fileID: 8300000, guid: fe2b70f28720c9845892e51640e0564e, type: 3}
+  dropSound: {fileID: 8300000, guid: d90b69502df3f2a408a3a29d283ba983, type: 3}
+  existingElementSound: {fileID: 8300000, guid: 9e64930262795cc4d8a1d691d2d1e51c, type: 3}
 --- !u!4 &286932318
 Transform:
   m_ObjectHideFlags: 0

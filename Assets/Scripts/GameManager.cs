@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public AudioClip newElementSound;
     public AudioClip pickupSound;
     public AudioClip dropSound;
+    public AudioClip existingElementSound;
+
 
     public GameManager()
     {
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (worldElement.GetElement() == recipe.GetRecipeOutputElement())
                     {
+                        AudioSource.PlayClipAtPoint(existingElementSound, new Vector2(0f, 0f), 0.4f);
                         return;
                     }
                 }
@@ -59,8 +62,14 @@ public class GameManager : MonoBehaviour
                 elementName.text = recipe.GetRecipeOutputElement().GetName();
                 elementSpriteDisplay.sprite = recipe.GetRecipeOutputElement().GetSprite();
                 mergeSucessScreenActive = true;
+
                 AudioSource.PlayClipAtPoint(newElementSound, new Vector2(0f, 0f));
                 break;
+            }
+
+            else
+            {
+                AudioSource.PlayClipAtPoint(existingElementSound, new Vector2(0f, 0f), 0.4f);
             }
         }
     }

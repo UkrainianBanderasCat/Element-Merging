@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager instance;
+    public static GameManager instance;  
 
     public WorldElement selectedElement;
     public WorldElement hoveredElement;
 
+    public UnityAction NewMergedElement;
     public List<Element> elements;
     public List<Recipe> recipes;
 
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image elementSpriteDisplay;
     [SerializeField] private TextMeshProUGUI elementNameDisplay;
 
+
     public string elementNameDisplayText;
     public bool hoveringOverElement;
     private bool mergeSucessScreenActive;
@@ -32,7 +36,7 @@ public class GameManager : MonoBehaviour
     public AudioClip newElementSound;
     public AudioClip pickupSound;
     public AudioClip dropSound;
-    public AudioClip notMergedSound;
+    public AudioClip existingElementSound;
 
 
     public GameManager()
@@ -51,6 +55,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (worldElement.GetElement() == recipe.GetRecipeOutputElement())
                     {
+                        AudioSource.PlayClipAtPoint(existingElementSound, new Vector2(0f, 0f), 0.4f);
                         return;
                     }
                 }
@@ -65,6 +70,11 @@ public class GameManager : MonoBehaviour
                 AudioSource.PlayClipAtPoint(newElementSound, new Vector2(0f, 0f));
                 break;
             }
+
+            else
+            {
+                AudioSource.PlayClipAtPoint(existingElementSound, new Vector2(0f, 0f), 0.4f);
+            }
         }
     }
 
@@ -76,6 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 mergeSucessScreen.GetComponent<Animator>().SetTrigger("Hide");
                 mergeSucessScreenActive = false;
+                NewMergedElement.Invoke();
             }
         }
 

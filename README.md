@@ -61,4 +61,3 @@ An experimental game Element Merging by Lime Inc.
 ### Completed
 
 - [ x ] Fix bug when elements can be placed out of workspace
-- [ ] Fix bug when elements can be placed out of workspace

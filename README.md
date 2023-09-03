@@ -29,8 +29,6 @@ An experimental game Element Merging by Lime Inc.
 
 - [ ] Fix bug with elements collision
 
-- [ ] Fix bug when elements can be placed out of workspace
-
 - [ ] Create new elements
   - [ ] Log
   - [ ] Fire
@@ -61,3 +59,6 @@ An experimental game Element Merging by Lime Inc.
 ### In progress
 
 ### Completed
+
+- [ x ] Fix bug when elements can be placed out of workspace
+- [ ] Fix bug when elements can be placed out of workspace

@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void MergeElements(Element leftElement, Element rightElement)
     {
-        foreach (Recipe recipe in recipeManager.recipes)
+        foreach (Recipe recipe in RecipeManager.instance.recipes)
         {
             // Matching Elements with Recipe
             if ((recipe.GetRecipeElementLeft() == leftElement && recipe.GetRecipeElementRight() == rightElement)

@@ -91,7 +91,30 @@ public class WorldElement : MonoBehaviour
             collidingWorldElement = null;
         }
 
+        if (!IsObjectInView())
+        {
+            // Return to the previous position
+            transform.position = previousPosition;
+        }
+
+
         AudioSource.PlayClipAtPoint(GameManager.instance.elementDropSound, new Vector2(0f, 0f), 0.3f);
+    }
+
+    private bool IsObjectInView()
+    {
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main camera not found. Make sure you have a camera in your scene.");
+            return false;
+        }
+
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
+
+        // Check if the object is within the viewport (0 to 1 in both x and y)
+        return viewportPosition.x >= 0 && viewportPosition.x <= 1 &&
+               viewportPosition.y >= 0 && viewportPosition.y <= 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

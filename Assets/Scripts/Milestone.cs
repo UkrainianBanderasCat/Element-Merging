@@ -11,6 +11,7 @@ public class Milestone : ScriptableObject
     public string MilestoneID;
     public Sprite MilestoneSprite;
     public int necessaryAmount;
+    public Element elementRequired;
     public Element reward;
 
     public Milestone() { }

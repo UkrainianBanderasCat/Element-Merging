@@ -7,46 +7,43 @@ using UnityEditor;
 public class MilestoneEditor : Editor
 {
     Milestone comp;
-
-    int countOfItem = 0;
     Element selectedElement;
 
     int _selected = 0;
     string[] _options = new string[2] { "Number of items required", "Specific item required" };
 
+    SerializedProperty necessaryAmountProp;
+    SerializedProperty elementRequiredProp;
+
     public void OnEnable()
     {
+        necessaryAmountProp = serializedObject.FindProperty("necessaryAmount");
+        elementRequiredProp = serializedObject.FindProperty("elementRequired");
         comp = (Milestone)target;
         selectedElement = (Element)ScriptableObject.CreateInstance("Element");
     }
 
     public override void OnInspectorGUI()
     {
-
         serializedObject.Update();
 
-        comp.MilestoneSprite = (Sprite)EditorGUILayout.ObjectField(comp.MilestoneSprite, typeof(Sprite), false, GUILayout.Width(80f), GUILayout.Height(80f)) ;
+        comp.MilestoneSprite = (Sprite)EditorGUILayout.ObjectField(comp.MilestoneSprite, typeof(Sprite), false, GUILayout.Width(80f), GUILayout.Height(80f));
         comp.MilestoneName = EditorGUILayout.TextField("Name", comp.MilestoneName);
         comp.MilestoneDescription = EditorGUILayout.TextField("Description", comp.MilestoneDescription);
 
-
         this._selected = EditorGUILayout.Popup("Condition type", _selected, _options);
 
-        if(_selected == 0)
+        if (_selected == 0) // Number of items required
         {
-            
-            countOfItem = EditorGUILayout.IntField("Required number of items :", countOfItem);
-            comp.condition = new ItemCountCondition(countOfItem);
+            EditorGUILayout.PropertyField(necessaryAmountProp, new GUIContent("Necessary Amount"));
+            elementRequiredProp.objectReferenceValue = null;
         }
-
-        if (_selected == 1)
+        else if (_selected == 1) // Specific item required
         {
-
-            selectedElement = (Element)EditorGUILayout.ObjectField(selectedElement, typeof(Element), false, GUILayout.Width(80f), GUILayout.Height(80f));
-            comp.condition = new ItemUnlockedCondition(selectedElement);
+            elementRequiredProp.objectReferenceValue = EditorGUILayout.ObjectField(new GUIContent("Element Required"), elementRequiredProp.objectReferenceValue, typeof(Element), false);
+            necessaryAmountProp.intValue = 0;
         }
 
         serializedObject.ApplyModifiedProperties();
-
     }
 }

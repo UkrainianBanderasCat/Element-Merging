@@ -47,6 +47,14 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void SpawnElement(Element element)
+    {
+        GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
+        newElement.GetComponent<WorldElement>().Initialize(element);
+        worldElements.Add(newElement.GetComponent<WorldElement>());
+        elementName.text = element.GetName();
+        elementSpriteDisplay.sprite = element.GetSprite();
+    }
     public void MergeElements(Element leftElement, Element rightElement)
     {
         foreach (Recipe recipe in RecipeManager.instance.recipes)
@@ -64,13 +72,8 @@ public class GameManager : MonoBehaviour
                         return;
                     }
                 }
-                // Instantiating New Element
-                GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
-                newElement.GetComponent<WorldElement>().Initialize(recipe.GetRecipeOutputElement());
-                worldElements.Add(newElement.GetComponent<WorldElement>());
+                SpawnElement(recipe.GetRecipeOutputElement());
                 mergeSucessScreen.SetActive(true);
-                elementName.text = recipe.GetRecipeOutputElement().GetName();
-                elementSpriteDisplay.sprite = recipe.GetRecipeOutputElement().GetSprite();
                 mergeSucessScreenActive = true;
                 // Playing Merge Audio
                 AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));

@@ -47,6 +47,18 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        if (SaveManager.instance.HasSaveData())
+        {
+            SaveManager.instance.Load();
+        }
+        else
+        {
+            LoadStarterElements();
+        }
+    }
+
     public void MergeElements(Element leftElement, Element rightElement)
     {
         foreach (Recipe recipe in RecipeManager.instance.recipes)
@@ -64,19 +76,32 @@ public class GameManager : MonoBehaviour
                         return;
                     }
                 }
-                // Instantiating New Element
-                GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
-                newElement.GetComponent<WorldElement>().Initialize(recipe.GetRecipeOutputElement());
-                worldElements.Add(newElement.GetComponent<WorldElement>());
+                GameObject newElement = CreateElement(recipe.GetRecipeOutputElement(), new Vector2(0f, 0f));
+
                 mergeSucessScreen.SetActive(true);
-                elementName.text = recipe.GetRecipeOutputElement().GetName();
-                elementSpriteDisplay.sprite = recipe.GetRecipeOutputElement().GetSprite();
                 mergeSucessScreenActive = true;
+
                 // Playing Merge Audio
                 AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
+                
+                SaveManager.instance.Save();
                 return;
             }
         }
+    }
+
+    public GameObject CreateElement(Element element, Vector2 position)
+    {
+        // Instantiating New Element
+        GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
+        newElement.GetComponent<WorldElement>().Initialize(element);
+        worldElements.Add(newElement.GetComponent<WorldElement>());
+        elementName.text = element.GetName();
+        elementSpriteDisplay.sprite = element.GetSprite();
+
+        newElement.transform.position = position;
+
+        return newElement;
     }
 
     public void Update()
@@ -112,6 +137,12 @@ public class GameManager : MonoBehaviour
             //--Old Code--
         }
         elementNameDisplay.text = elementNameDisplayText;
+    }
+
+    public void LoadStarterElements()
+    {
+        CreateElement(ElementManager.instance.GetElement("chlorine"), new Vector2(-4f, 0f));
+        CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
     }
 
 }

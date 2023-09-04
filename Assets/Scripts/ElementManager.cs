@@ -8,6 +8,7 @@ public class ElementManager : MonoBehaviour
     public static ElementManager instance;
 
     public List<Element> elements;
+    public List<Element> createdElements;
 
     public ElementManager()
     {

@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
                         return;
                     }
                 }
+
                 GameObject newElement = CreateElement(recipe.GetRecipeOutputElement(), new Vector2(0f, 0f));
 
                 mergeSucessScreen.SetActive(true);

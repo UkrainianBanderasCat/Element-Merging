@@ -38,17 +38,7 @@ public class MilestonesManager : MonoBehaviour
 
         for (int i = 0; i<remainingMilestones.Count; i++)
         {
-            if (remainingMilestones[i].GetConditionAmount() <= unlockedElementNumber)
-            {
-                completedMilestones.Add(remainingMilestones[i]);
-                UpdateSuccessUI(remainingMilestones[i]);
-                remainingMilestones.RemoveAt(i);
-                achievementPanel.SetActive(true);
-                isPlayingAnimation = true;
-                timerStart = Time.time;
-                achievementPanel.GetComponent<Animator>().SetTrigger("end");
-                return;
-            }
+            ProcessMilestone(remainingMilestones[i]);
         }
     }
 
@@ -57,6 +47,36 @@ public class MilestonesManager : MonoBehaviour
         title.text = milestone.GetName();
         desc.text = milestone.GetDescription();
         img.sprite = milestone.GetSprite();
+    }
+
+    private void ProcessMilestone(Milestone milestone)
+    {
+        if(milestone.GetCondition().isMet(GameManager.instance.worldElements))
+        {
+            UpdateSuccessUI(milestone);
+            DisplayMilestonePopUp(milestone);
+            GetReward(milestone);
+            UpdateList(milestone);
+        }
+    }
+
+    private void UpdateList(Milestone milestone)
+    {
+        completedMilestones.Add(milestone);
+        remainingMilestones.Remove(milestone);
+    }
+
+    private void DisplayMilestonePopUp(Milestone milestone)
+    {
+        achievementPanel.SetActive(true);
+        isPlayingAnimation = true;
+        timerStart = Time.time;
+        return;
+
+    }
+    private void GetReward(Milestone milestone)
+    {
+        GameManager.instance.SpawnElement(milestone.reward);
     }
 
     private void Update()

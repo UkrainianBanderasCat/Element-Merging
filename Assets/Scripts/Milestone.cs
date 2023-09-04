@@ -10,8 +10,18 @@ public class Milestone : ScriptableObject
     public string MilestoneDescription;
     public string MilestoneID;
     public Sprite MilestoneSprite;
-    public int necessaryAmount;
     public Element reward;
+
+
+    //Condition Managing
+    public int ConditionType;
+
+    public int NecessaryAmount;
+    public Element SelectedElement;
+    public List<Element> SelectedElements = new List<Element>();
+    public List<Milestone> NeededMilestones = new List<Milestone>();
+
+    //End of condition Managing
 
     public Milestone() { }
     public string GetName()
@@ -31,10 +41,6 @@ public class Milestone : ScriptableObject
         return MilestoneSprite;
     }
 
-    public int GetConditionAmount()
-    {
-        return necessaryAmount;
-    }
 
     public bool hasReward()
     {
@@ -47,7 +53,33 @@ public class Milestone : ScriptableObject
     }
     public Condition GetCondition()
     {
+        if(condition == null)
+        {
+            CreateCondition();
+        }
         return condition;
+    }
+
+    void CreateCondition()
+    {
+        switch (ConditionType)
+        {
+            case 0: //Number of Items required
+                condition = new ItemCountCondition(NecessaryAmount);
+                break;
+
+            case 1: //Specific item required
+                condition = new ItemUnlockedCondition(SelectedElement);
+                break;
+
+            case 2: //Mulitple items required
+                condition = new ItemsUnlockedCondition(SelectedElements);
+                break;
+
+            case 3: //Multiple milestones required
+                condition = new MilestonesUnlockedCondtion(NeededMilestones);
+                break;
+        }
     }
 }
 
@@ -74,7 +106,7 @@ public class ItemCountCondition : Condition
 
 public class ItemUnlockedCondition : Condition
 {
-    [SerializeField] Element wantedElement;
+    [SerializeField] public Element wantedElement;
 
     public ItemUnlockedCondition(Element element)
     {
@@ -91,5 +123,49 @@ public class ItemUnlockedCondition : Condition
         }
 
         return false;
+    }
+}
+
+public class ItemsUnlockedCondition : Condition
+{
+    List<Element> wantedElements;
+
+    public ItemsUnlockedCondition(List<Element> selectedElements)
+    {
+        wantedElements = selectedElements;
+    }
+
+    public override bool isMet(List<WorldElement> unlockedElements)
+    {
+        ItemUnlockedCondition checker = new ItemUnlockedCondition(unlockedElements[0].GetElement());
+
+        foreach (Element element in wantedElements)
+        {
+            checker.wantedElement = element;
+            if(!checker.isMet(unlockedElements)) { return false; }
+        }
+
+        return true;
+    }
+
+}
+
+public class MilestonesUnlockedCondtion : Condition
+{
+    List<Milestone> wantedMilestones;
+    
+    public MilestonesUnlockedCondtion(List<Milestone> selectedMilestones)
+    {
+        wantedMilestones = selectedMilestones;
+    }
+
+    public override bool isMet(List<WorldElement> unlockedElements)
+    {
+        foreach(Milestone milestone in wantedMilestones)
+        {
+            if(!milestone.GetCondition().isMet(unlockedElements)) { return false; }
+        }
+
+        return true;
     }
 }

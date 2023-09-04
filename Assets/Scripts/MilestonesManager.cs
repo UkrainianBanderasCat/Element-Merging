@@ -51,7 +51,7 @@ public class MilestonesManager : MonoBehaviour
 
     private void ProcessMilestone(Milestone milestone)
     {
-        if(milestone.condition.isMet(GameManager.instance.worldElements))
+        if(milestone.GetCondition().isMet(GameManager.instance.worldElements))
         {
             UpdateSuccessUI(milestone);
             DisplayMilestonePopUp(milestone);

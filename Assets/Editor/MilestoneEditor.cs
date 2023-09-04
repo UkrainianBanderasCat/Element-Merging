@@ -6,47 +6,69 @@ using UnityEditor;
 [CustomEditor(typeof(Milestone))]
 public class MilestoneEditor : Editor
 {
-    Milestone comp;
+    /*-----------------Milestone Info--------------------------------------------*/
+    SerializedProperty MilestoneSpriteProp;
+    SerializedProperty MilestoneNameProp;
+    SerializedProperty MilestoneDescProp;
+    SerializedProperty MilestoneRewardProp;
+    /*---------------------------------------------------------------------------*/
 
-    int countOfItem = 0;
-    Element selectedElement;
+    /*-----------------Condition Info--------------------------------------------*/
+    SerializedProperty ConditionTypeProp;
 
-    int _selected = 0;
-    string[] _options = new string[2] { "Number of items required", "Specific item required" };
+    SerializedProperty NecessaryAmountProp;
+    SerializedProperty SelectedElementProp;
+    SerializedProperty SelectedElementsProp;
+    SerializedProperty NeededMilestonesProp;
+
+    /*---------------------------------------------------------------------------*/
+
+
+    string[] dropDownOptions = new string[4] { "Number of items required", "Specific item required", "Multiple items required", "Multiple different unlocked milestones required" };
 
     public void OnEnable()
     {
-        comp = (Milestone)target;
-        selectedElement = (Element)ScriptableObject.CreateInstance("Element");
+        MilestoneNameProp = serializedObject.FindProperty("MilestoneName");
+        MilestoneDescProp = serializedObject.FindProperty("MilestoneDescription");
+        MilestoneSpriteProp = serializedObject.FindProperty("MilestoneSprite");
+        MilestoneRewardProp = serializedObject.FindProperty("reward");
+
+        ConditionTypeProp = serializedObject.FindProperty("ConditionType");
+        NecessaryAmountProp = serializedObject.FindProperty("NecessaryAmount");
+        SelectedElementProp = serializedObject.FindProperty("SelectedElement");
+        SelectedElementsProp = serializedObject.FindProperty("SelectedElements");
+        NeededMilestonesProp = serializedObject.FindProperty("NeededMilestones");
+
     }
 
     public override void OnInspectorGUI()
     {
-
         serializedObject.Update();
 
-        comp.MilestoneSprite = (Sprite)EditorGUILayout.ObjectField(comp.MilestoneSprite, typeof(Sprite), false, GUILayout.Width(80f), GUILayout.Height(80f)) ;
-        comp.MilestoneName = EditorGUILayout.TextField("Name", comp.MilestoneName);
-        comp.MilestoneDescription = EditorGUILayout.TextField("Description", comp.MilestoneDescription);
+        EditorGUILayout.PropertyField(MilestoneSpriteProp);
+        EditorGUILayout.PropertyField(MilestoneNameProp);
+        EditorGUILayout.PropertyField(MilestoneDescProp);
+        EditorGUILayout.PropertyField(MilestoneRewardProp);
 
+        ConditionTypeProp.intValue = EditorGUILayout.Popup(ConditionTypeProp.intValue, dropDownOptions);
 
-        this._selected = EditorGUILayout.Popup("Condition type", _selected, _options);
-
-        if(_selected == 0)
-        {
-            
-            countOfItem = EditorGUILayout.IntField("Required number of items :", countOfItem);
-            comp.condition = new ItemCountCondition(countOfItem);
-        }
-
-        if (_selected == 1)
-        {
-
-            selectedElement = (Element)EditorGUILayout.ObjectField(selectedElement, typeof(Element), false, GUILayout.Width(80f), GUILayout.Height(80f));
-            comp.condition = new ItemUnlockedCondition(selectedElement);
+        switch (ConditionTypeProp.intValue) {
+            case 0:
+                EditorGUILayout.PropertyField(NecessaryAmountProp);
+                break;
+            case 1:
+                EditorGUILayout.PropertyField(SelectedElementProp);
+                break;
+            case 2:
+                EditorGUILayout.PropertyField(SelectedElementsProp);
+                break;
+            case 3:
+                EditorGUILayout.PropertyField(NeededMilestonesProp);
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();
+
 
     }
 }

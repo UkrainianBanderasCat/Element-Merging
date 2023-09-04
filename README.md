@@ -20,16 +20,8 @@ An experimental game Element Merging by Lime Inc.
 ## ToDo list:
 
 ### ToDo
-- [ ] Save system
-  - [ ] Save created elements
-  - [ ] Save achivements
-  - [ ] Save elements position
 
 - [ ] Multiple elements in output
-
-- [ ] Fix bug with elements collision
-
-- [ ] Fix bug when elements can be placed out of workspace
 
 - [ ] Create new elements
   - [ ] Log
@@ -60,4 +52,12 @@ An experimental game Element Merging by Lime Inc.
 
 ### In progress
 
+- [ ] Save system
+  - [x] Save created elements *by UkrainianBanderasCat*
+  - [ ] Save achivements
+  - [x] Save elements position *by UkrainianBanderasCat*
+
 ### Completed
+
+- [x] Fix bug when elements can be placed out of workspace *by UkrainianBanderasCat*
+- [x] Fix bug with elements collision *by TheRiggedDev*

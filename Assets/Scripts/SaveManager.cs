@@ -48,8 +48,6 @@ public class SaveManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(elementsList);
 
-        Debug.Log(json);
-
         PlayerPrefs.SetString("elementData", json);
         PlayerPrefs.Save();
     }
@@ -60,8 +58,6 @@ public class SaveManager : MonoBehaviour
 
         string json = PlayerPrefs.GetString("elementData");
         elementsList = JsonUtility.FromJson<ElementsList>(json);
-
-        Debug.Log(elementsList.elements.Count);
 
         foreach (ElementData element in elementsList.elements)
         {

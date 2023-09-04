@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Milestone", menuName = "Game/Milestone")]
 public class Milestone : ScriptableObject
 {
+    public bool IsCompleted = false;
+
     public Condition condition;
     public string MilestoneName;
     public string MilestoneDescription;

@@ -13,12 +13,28 @@ public class SaveManager : MonoBehaviour
         public Vector3 position;
     }
 
+    public struct MilestoneData
+    {
+        public string id;
+        public bool unlocked;
+
+        public MilestoneData(string id, bool unlocked)
+        {
+            this.id = id;
+            this.unlocked = unlocked;
+        }
+    }
+
     [System.Serializable]
     public class ElementsList
     {
         public List<ElementData> elements = new List<ElementData>();
     }
 
+    public class MilestoneList
+    {
+        public List<MilestoneData> milestones = new List<MilestoneData>();
+    }
     private bool hasSaveData;
 
     public SaveManager()
@@ -28,6 +44,7 @@ public class SaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         hasSaveData = PlayerPrefs.HasKey("elementData");
     }
 
@@ -35,6 +52,9 @@ public class SaveManager : MonoBehaviour
     {
         List<WorldElement> elements = GameManager.instance.worldElements;
         ElementsList elementsList = new ElementsList();
+
+        List<Milestone> milestones = MilestonesManager.instance.milestones;
+        MilestoneList milestoneList = new MilestoneList();
 
         foreach (WorldElement element in elements)
         {
@@ -46,10 +66,20 @@ public class SaveManager : MonoBehaviour
             elementsList.elements.Add(newElement);
         }
 
+        foreach (Milestone milestone in milestones)
+        {
+             milestoneList.milestones.Add(new MilestoneData(milestone.name, milestone.IsCompleted));
+        }
+
         string json = JsonUtility.ToJson(elementsList);
+        string milestoneJson = JsonUtility.ToJson(milestoneList);
 
         PlayerPrefs.SetString("elementData", json);
         PlayerPrefs.Save();
+
+        PlayerPrefs.SetString("milestoneData", milestoneJson);
+        PlayerPrefs.Save();
+
     }
 
     public void Load()
@@ -59,9 +89,19 @@ public class SaveManager : MonoBehaviour
         string json = PlayerPrefs.GetString("elementData");
         elementsList = JsonUtility.FromJson<ElementsList>(json);
 
+        MilestoneList milestoneList = JsonUtility.FromJson<MilestoneList>(PlayerPrefs.GetString("milestoneData")); //Retrieve milestones form playerpref in json and convert it back
+        
+
         foreach (ElementData element in elementsList.elements)
         {
             GameManager.instance.CreateElement(ElementManager.instance.GetElement(element.id), element.position);
+        }
+
+
+
+        foreach (MilestoneData milestoneData in milestoneList.milestones)
+        {
+            MilestonesManager.instance.UpdateList(MilestonesManager.instance.GetMilestoneByName(milestoneData.id));
         }
     }
 
@@ -73,6 +113,8 @@ public class SaveManager : MonoBehaviour
 
     public bool HasSaveData()
     {
+        hasSaveData = PlayerPrefs.HasKey("elementData");
+        Debug.Log(hasSaveData);
         return hasSaveData;
     }
 }

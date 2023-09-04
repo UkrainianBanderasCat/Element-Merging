@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4b866cf8016b44ca886f590ff631b4, type: 3}
   m_Name: Reward Hat
   m_EditorClassIdentifier: 
-  ElementName: 
-  ElementID: 
-  ElementSprite: {fileID: 0}
+  ElementName: Perry Hat
+  ElementID: hat1
+  ElementSprite: {fileID: 21300000, guid: bbf6d2d5bbbed3246838dd2bb1f58ad7, type: 3}

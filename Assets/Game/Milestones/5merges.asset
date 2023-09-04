@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e89450bd7f13b418362e6d3312fef1, type: 3}
   m_Name: 5merges
   m_EditorClassIdentifier: 
-  MilestoneName: First steps
-  MilestoneDescription: Congrats on your 5 first items ! With your items, you could
-    probably fill a small island.
+  IsCompleted: 1
+  MilestoneName: Mithril !
+  MilestoneDescription: A Platypus ? Perry the platypus !?
   MilestoneID: five
   MilestoneSprite: {fileID: 21300000, guid: 721460b7fdcecdc4881817a46a411de5, type: 3}
-  necessaryAmount: 5
+  reward: {fileID: 11400000, guid: 3d13c147e54caee4d8bc1759f46b005f, type: 2}
+  ConditionType: 1
+  NecessaryAmount: 0
+  SelectedElement: {fileID: 11400000, guid: 461f20d2c5ada9941a2557f50542cc72, type: 2}
+  SelectedElements: []
+  NeededMilestones: []

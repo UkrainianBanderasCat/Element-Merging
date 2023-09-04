@@ -457,6 +457,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 732be970b0023d941af5dda316607e61, type: 2}
   - {fileID: 11400000, guid: d0dda5ac1336b0a47bd213ec31c8f929, type: 2}
   - {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
+  - {fileID: 11400000, guid: 3d13c147e54caee4d8bc1759f46b005f, type: 2}
   createdElements: []
 --- !u!114 &286932322
 MonoBehaviour:
@@ -1201,7 +1202,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.75
+  m_fontSize: 29.8
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.65
+  m_fontSize: 28.4
   m_fontSizeBase: 110
   m_fontWeight: 400
   m_enableAutoSizing: 1

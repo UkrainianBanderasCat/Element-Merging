@@ -8,6 +8,8 @@ using TMPro;
 
 public class MilestonesManager : MonoBehaviour
 {
+    public static MilestonesManager instance;
+
     public GameObject achievementPanel;
     public TMP_Text title;
     public TMP_Text desc;
@@ -23,6 +25,8 @@ public class MilestonesManager : MonoBehaviour
 
     [SerializeField] private int unlockedElementNumber;
 
+    public MilestonesManager()
+    { instance = this; }
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +61,16 @@ public class MilestonesManager : MonoBehaviour
             DisplayMilestonePopUp(milestone);
             GetReward(milestone);
             UpdateList(milestone);
+            SaveManager.instance.Save();
         }
     }
 
-    private void UpdateList(Milestone milestone)
+    public void UpdateList(Milestone milestone)
     {
+        milestone.IsCompleted = true;
         completedMilestones.Add(milestone);
         remainingMilestones.Remove(milestone);
+
     }
 
     private void DisplayMilestonePopUp(Milestone milestone)
@@ -76,7 +83,21 @@ public class MilestonesManager : MonoBehaviour
     }
     private void GetReward(Milestone milestone)
     {
-        GameManager.instance.SpawnElement(milestone.reward);
+        GameManager.instance.CreateElement(milestone.reward, new Vector2(0f,0f));
+    }
+
+    public Milestone GetMilestoneByName(string name)
+    {
+        foreach (Milestone milestone in milestones)
+        {
+            if(milestone.name == name)
+            {
+                return milestone;
+            }
+        }
+
+        Debug.LogError($"Unable to find element with name \"{name}\". Returning null in place of the milestone. Consider carefully. ");
+        return null;
     }
 
     private void Update()

@@ -53,9 +53,9 @@ An experimental game Element Merging by Lime Inc.
 ### In progress
 
 - [ ] Save system
-  - [x] Save created elements
+  - [x] Save created elements *by UkrainianBanderasCat*
   - [ ] Save achivements
-  - [x] Save elements position
+  - [x] Save elements position *by UkrainianBanderasCat*
 
 ### Completed
 

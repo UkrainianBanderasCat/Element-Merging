@@ -20,10 +20,6 @@ An experimental game Element Merging by Lime Inc.
 ## ToDo list:
 
 ### ToDo
-- [ ] Save system
-  - [ ] Save created elements
-  - [ ] Save achivements
-  - [ ] Save elements position
 
 - [ ] Multiple elements in output
 
@@ -55,6 +51,11 @@ An experimental game Element Merging by Lime Inc.
 - [ ] Add modding feature
 
 ### In progress
+
+- [ ] Save system
+  - [x] Save created elements *by UkrainianBanderasCat*
+  - [ ] Save achivements
+  - [x] Save elements position *by UkrainianBanderasCat*
 
 ### Completed
 

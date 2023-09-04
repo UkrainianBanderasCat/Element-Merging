@@ -76,7 +76,7 @@ public class MilestonesManager : MonoBehaviour
     }
     private void GetReward(Milestone milestone)
     {
-        GameManager.instance.SpawnElement(milestone.reward);
+        GameManager.instance.CreateElement(milestone.reward, new Vector2(0f, 0f));
     }
 
     private void Update()

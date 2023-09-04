@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadStarterElements()
     {
-        CreateElement(ElementManager.instance.GetElement("chlorine"), new Vector2(-4f, 0f));
+        CreateElement(ElementManager.instance.GetElement("water"), new Vector2(-4f, 0f));
         CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
     }
 

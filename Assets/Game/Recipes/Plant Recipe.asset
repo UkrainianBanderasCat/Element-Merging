@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37eccc42f00a62d439048619b37ed604, type: 3}
-  m_Name: Tree Recipe
+  m_Name: Plant Recipe
   m_EditorClassIdentifier: 
-  RecipeID: tree
+  RecipeID: plant
   RecipeElementLeft: {fileID: 11400000, guid: 902d9a08d785f3b46a2a4bf644e524ad, type: 2}
-  RecipeElementRight: {fileID: 11400000, guid: 6e2b99c4770dd984da0dfb30244c0074, type: 2}
-  RecipeOutputElement: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
+  RecipeElementRight: {fileID: 11400000, guid: d0dda5ac1336b0a47bd213ec31c8f929, type: 2}
+  RecipeOutputElement: {fileID: 11400000, guid: 6e2b99c4770dd984da0dfb30244c0074, type: 2}

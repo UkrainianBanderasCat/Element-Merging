@@ -15,4 +15,6 @@ MonoBehaviour:
   RecipeID: fried_egg
   RecipeElementLeft: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
   RecipeElementRight: {fileID: 11400000, guid: 732be970b0023d941af5dda316607e61, type: 2}
-  RecipeOutputElement: {fileID: 11400000, guid: 79517ba54b58e53409f1a652cda54f55, type: 2}
+  RecipeOutputElements:
+  - {fileID: 11400000, guid: 79517ba54b58e53409f1a652cda54f55, type: 2}
+  - {fileID: 11400000, guid: d0dda5ac1336b0a47bd213ec31c8f929, type: 2}

@@ -79,8 +79,7 @@ public class GameManager : MonoBehaviour
 
                 GameObject newElement = CreateElement(recipe.GetRecipeOutputElement(), new Vector2(0f, 0f));
 
-                mergeSucessScreen.SetActive(true);
-                mergeSucessScreenActive = true;
+                ShowMergeSucessScreen();
 
                 // Playing Merge Audio
                 AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
@@ -138,6 +137,17 @@ public class GameManager : MonoBehaviour
             //--Old Code--
         }
         elementNameDisplay.text = elementNameDisplayText;
+    }
+
+    public bool isMergeSucessScreenActive()
+    {
+        return mergeSucessScreen;
+    }
+
+    public void ShowMergeSucessScreen()
+    {
+        mergeSucessScreen.SetActive(true);
+        mergeSucessScreenActive = true;
     }
 
     public void LoadStarterElements()

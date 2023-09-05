@@ -79,11 +79,13 @@ public class MilestonesManager : MonoBehaviour
         isPlayingAnimation = true;
         timerStart = Time.time;
         return;
-
     }
     private void GetReward(Milestone milestone)
     {
-        GameManager.instance.CreateElement(milestone.reward, new Vector2(0f,0f));
+        if (milestone.reward != null)
+        {
+            GameManager.instance.CreateElement(milestone.reward, new Vector2(0f, 0f));
+        }
     }
 
     public Milestone GetMilestoneByName(string name)

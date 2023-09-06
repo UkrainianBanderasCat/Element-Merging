@@ -17,9 +17,11 @@ MonoBehaviour:
   MilestoneDescription: A Platypus ? Perry the platypus !?
   MilestoneID: five
   MilestoneSprite: {fileID: 21300000, guid: 721460b7fdcecdc4881817a46a411de5, type: 3}
-  reward: {fileID: 0}
+  reward: {fileID: 11400000, guid: 461f20d2c5ada9941a2557f50542cc72, type: 2}
   ConditionType: 0
-  NecessaryAmount: 5
+  NecessaryAmount: 4
   SelectedElement: {fileID: 0}
-  SelectedElements: []
+  SelectedElements:
+  - {fileID: 11400000, guid: 3d13c147e54caee4d8bc1759f46b005f, type: 2}
+  - {fileID: 11400000, guid: d98c27c3f89770f4bb647b96b7713e04, type: 2}
   NeededMilestones: []

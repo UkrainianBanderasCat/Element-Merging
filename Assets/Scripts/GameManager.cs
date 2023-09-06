@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public AudioClip elementDropSound;
     public AudioClip elementMergeFailureSound;
 
+    //Callback trace for the WorldElements (we can't add them in the foreach)
+    public Stack<WorldElement> WaitingElements = new Stack<WorldElement>();
+
     public GameManager()
     {
         instance = this;
@@ -59,25 +62,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MergeElements(Element leftElement, Element rightElement)
+    public void MergeElements(List<Element> elements)
     {
         foreach (Recipe recipe in RecipeManager.instance.recipes)
         {
+            
             // Matching Elements with Recipe
-            if ((recipe.GetRecipeElementLeft() == leftElement && recipe.GetRecipeElementRight() == rightElement)
-                || (recipe.GetRecipeElementLeft() == rightElement && recipe.GetRecipeElementRight() == leftElement))
+            if (recipe.CanCraftWith(elements))
             {
-                // Checking if element already has been merged
-                foreach (WorldElement worldElement in worldElements)
+                bool hasBeenDone = true;
+
+                foreach(Element element in recipe.GetRecipeOutputElements())
                 {
-                    if (worldElement.GetElement() == recipe.GetRecipeOutputElement())
+                    bool containsElement = false;
+                    foreach(WorldElement worldElement in worldElements)
                     {
-                        AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
-                        return;
+                        if(worldElement.GetElement() == element)
+                        {
+                            containsElement = true;
+                        }
+                        
+                    }
+
+                    if(!containsElement)
+                    {
+                        hasBeenDone = false;
+                        CreateElement(element, new Vector2(0f + Random.Range(0f, 2f), 0f + Random.Range(0f, 2f)));
                     }
                 }
 
-                GameObject newElement = CreateElement(recipe.GetRecipeOutputElement(), new Vector2(0f, 0f));
+                Release();
+
+
+                if (hasBeenDone)
+                {
+                    AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                    return;
+                }
+
 
                 ShowMergeSucessScreen();
 
@@ -95,13 +117,29 @@ public class GameManager : MonoBehaviour
         // Instantiating New Element
         GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
         newElement.GetComponent<WorldElement>().Initialize(element);
-        worldElements.Add(newElement.GetComponent<WorldElement>());
+        Hold(newElement);
         elementName.text = element.GetName();
         elementSpriteDisplay.sprite = element.GetSprite();
 
         newElement.transform.position = position;
 
         return newElement;
+    }
+
+    void Hold(GameObject newElement)
+    {
+        WaitingElements.Push(newElement.GetComponent<WorldElement>());
+    }
+
+    public void Release()
+    {
+        for(int i = 0; i<WaitingElements.Count; i++)
+        {
+            worldElements.Add(WaitingElements.Peek());
+            WaitingElements.Pop();
+        }
+
+        WaitingElements.Clear();
     }
 
     public void Update()

@@ -103,6 +103,8 @@ public class SaveManager : MonoBehaviour
         {
             MilestonesManager.instance.UpdateList(MilestonesManager.instance.GetMilestoneByName(milestoneData.id));
         }
+
+        GameManager.instance.Release();
     }
 
     public void ResetSaveData()
@@ -113,8 +115,9 @@ public class SaveManager : MonoBehaviour
 
     public bool HasSaveData()
     {
-        hasSaveData = PlayerPrefs.HasKey("elementData");
+        /*hasSaveData = PlayerPrefs.HasKey("elementData");
         Debug.Log(hasSaveData);
-        return hasSaveData;
+        return hasSaveData;*/
+        return false;
     }
 }

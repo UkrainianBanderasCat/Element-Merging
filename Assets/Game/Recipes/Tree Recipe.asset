@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Tree Recipe
   m_EditorClassIdentifier: 
   RecipeID: tree
-  RecipeElementLeft: {fileID: 11400000, guid: 902d9a08d785f3b46a2a4bf644e524ad, type: 2}
-  RecipeElementRight: {fileID: 11400000, guid: 6e2b99c4770dd984da0dfb30244c0074, type: 2}
-  RecipeOutputElement: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
+  RecipeElements:
+  - {fileID: 11400000, guid: dcdaf69f26a0bea48b23b040ae0403e4, type: 2}
+  - {fileID: 11400000, guid: 461f20d2c5ada9941a2557f50542cc72, type: 2}
+  RecipeOutputElements:
+  - {fileID: 11400000, guid: 45d773d589c6bae429d3c218ab183d60, type: 2}
+  - {fileID: 11400000, guid: 902d9a08d785f3b46a2a4bf644e524ad, type: 2}

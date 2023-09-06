@@ -87,7 +87,10 @@ public class WorldElement : MonoBehaviour
         if (collidingWorldElement != null)
         {
             transform.position = previousPosition;
-            GameManager.instance.MergeElements(element, collidingWorldElement.GetElement());
+            List<Element> MergedElements = new List<Element>();
+            MergedElements.Add(collidingWorldElement.GetElement());
+            MergedElements.Add(element);
+            GameManager.instance.MergeElements(MergedElements);
             collidingWorldElement = null;
         }
 

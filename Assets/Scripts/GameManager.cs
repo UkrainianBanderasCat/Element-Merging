@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         }
 
         int j = 0;
-        for(float i =  - (elementNames.Count/2); i <= elementNames.Count / 2; i+= elementNames.Count)
+        for(float i =  - (elementNames.Count/2); i <= elementNames.Count / 2; i+= elementNames.Count * elementNames.Count/2)
         {
             
             elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition = new Vector2(250f * i, elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition.y);

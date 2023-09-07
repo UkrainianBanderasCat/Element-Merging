@@ -5,18 +5,19 @@ An experimental game Element Merging by Lime Inc.
 ```
 1. Soil + Water = Plant
 2. Plant + Water = Tree & Fire
-3. Soil + Fire = Lava
-4. Lava + Water = Rock
+4. Fire + Soil = Rock
 5. Tree + Rock = Log
 6. Log + Rock = Tools
 7. Log + Tools = Plank
 8. Fire + Tree = Campfire
 9. Log + Fire = Charcoal
-10. Campfire + Rock = Furnace
-11. Tools + Stone = Iron Ore
-12. Iron Ore + Tools = Raw Iron
-13. Furnace + Raw Iron = Iron Ingot
-14. Plank + Iron = Advanced Tools
+10. Tools + Stone = Iron Ore
+11. Iron Ore + Tools = Raw Iron
+12. Fire + Raw Iron = Iron Ingot
+13. Plank + Iron = Advanced Tools
+14. Fire + Rock = Sand
+15. Sand + Fire = Glass
+
 ```
 ## ToDo list:
 

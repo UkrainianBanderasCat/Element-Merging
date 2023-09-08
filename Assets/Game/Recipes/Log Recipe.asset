@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eccc42f00a62d439048619b37ed604, type: 3}
   m_Name: Log Recipe
   m_EditorClassIdentifier: 
-  RecipeID: tree
+  RecipeID: log
   RecipeElementLeft: {fileID: 11400000, guid: d21cdf4576204b246b5b2d65d9c46abb, type: 2}
   RecipeElementRight: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
   RecipeOutputElement: {fileID: 11400000, guid: bcea55f2b6195ec46a57684ce4b68489, type: 2}

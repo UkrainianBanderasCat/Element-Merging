@@ -108,6 +108,7 @@ public class SaveManager : MonoBehaviour
     public void ResetSaveData()
     {
         PlayerPrefs.DeleteKey("elementData");
+        PlayerPrefs.DeleteKey("milestoneData");
         hasSaveData = false;
     }
 

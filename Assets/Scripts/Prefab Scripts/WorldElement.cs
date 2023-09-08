@@ -78,7 +78,11 @@ public class WorldElement : MonoBehaviour
         dragging = true;
         dragDelta = (Vector2)transform.position - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         previousPosition = transform.position;
-        AudioSource.PlayClipAtPoint(GameManager.instance.elementGrabSound, new Vector2(0f, 0f), 0.3f);
+
+        if (GameManager.instance.playSoundEffects)
+        {
+            AudioSource.PlayClipAtPoint(GameManager.instance.elementGrabSound, new Vector2(0f, 0f), 0.3f);
+        }
     }
     private void OnMouseUp()
     {
@@ -97,8 +101,10 @@ public class WorldElement : MonoBehaviour
             transform.position = previousPosition;
         }
 
-
-        AudioSource.PlayClipAtPoint(GameManager.instance.elementDropSound, new Vector2(0f, 0f), 0.3f);
+        if (GameManager.instance.playSoundEffects)
+        {
+            AudioSource.PlayClipAtPoint(GameManager.instance.elementDropSound, new Vector2(0f, 0f), 0.3f);
+        }
     }
 
     private bool IsObjectInView()

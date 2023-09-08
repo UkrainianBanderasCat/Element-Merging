@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public AudioClip elementGrabSound;
     public AudioClip elementDropSound;
     public AudioClip elementMergeFailureSound;
+    public bool playSoundEffects;
 
     public GameManager()
     {
@@ -72,7 +73,10 @@ public class GameManager : MonoBehaviour
                 {
                     if (worldElement.GetElement() == recipe.GetRecipeOutputElement())
                     {
-                        AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                        if (playSoundEffects)
+                        {
+                            AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                        }
                         return;
                     }
                 }
@@ -82,7 +86,10 @@ public class GameManager : MonoBehaviour
                 ShowMergeSucessScreen();
 
                 // Playing Merge Audio
-                AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
+                if (playSoundEffects)
+                {
+                    AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
+                }
                 
                 SaveManager.instance.Save();
                 return;

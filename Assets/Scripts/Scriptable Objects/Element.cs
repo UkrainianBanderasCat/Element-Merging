@@ -9,6 +9,7 @@ public class Element : ScriptableObject
     [SerializeField] private string ElementID;
     [SerializeField] private Sprite ElementSprite;
 
+    //Get
     public string GetName()
     {
         return ElementName;
@@ -20,6 +21,20 @@ public class Element : ScriptableObject
     public Sprite GetSprite()
     {
         return ElementSprite;
+    }
+
+    //Set
+    public void SetName(string name)
+    {
+        ElementName = name;
+    }
+    public void SetID(string id)
+    {
+        ElementID = id;
+    }
+    public void SetSprite(Sprite sprite)
+    {
+        ElementSprite = sprite;
     }
 
 }

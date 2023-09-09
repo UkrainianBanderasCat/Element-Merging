@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        ElementManager.instance.LoadElements();
+        RecipeManager.instance.LoadRecipes();
+        
         if (SaveManager.instance.HasSaveData())
         {
             SaveManager.instance.Load();
@@ -90,7 +93,7 @@ public class GameManager : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
                 }
-                
+
                 SaveManager.instance.Save();
                 return;
             }
@@ -100,6 +103,12 @@ public class GameManager : MonoBehaviour
     public GameObject CreateElement(Element element, Vector2 position)
     {
         // Instantiating New Element
+        if (element == null)
+        {
+            Debug.LogError("Error: Unable to create null element");
+            return null;
+        }
+
         GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
         newElement.GetComponent<WorldElement>().Initialize(element);
         worldElements.Add(newElement.GetComponent<WorldElement>());

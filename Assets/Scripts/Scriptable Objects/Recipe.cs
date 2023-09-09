@@ -10,6 +10,7 @@ public class Recipe : ScriptableObject
     [SerializeField] private Element RecipeElementRight;
     [SerializeField] private Element RecipeOutputElement;
 
+    //Get
     public string GetID()
     {
         return RecipeID;
@@ -25,6 +26,24 @@ public class Recipe : ScriptableObject
     public Element GetRecipeOutputElement()
     {
         return RecipeOutputElement;
+    }
+
+    //Set
+    public void SetID(string id)
+    {
+        RecipeID = id;
+    }
+    public void SetRecipeElementLeft(Element element)
+    {
+        RecipeElementLeft = element;
+    }
+    public void SetRecipeElementRight(Element element)
+    {
+        RecipeElementRight = element;
+    }
+    public void SetRecipeOutputElement(Element element)
+    {
+        RecipeOutputElement = element;
     }
 
 }

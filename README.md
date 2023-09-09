@@ -11,10 +11,10 @@ An experimental game Element Merging by Lime Inc.
 7. Log + Tools = Plank
 8. Fire + Tree = Campfire
 9. Log + Fire = Charcoal
-10. Tools + Stone = Iron Ore
+10. Tools + Rock = Iron Ore
 11. Iron Ore + Tools = Raw Iron
 12. Fire + Raw Iron = Iron Ingot
-13. Plank + Iron = Advanced Tools
+13. Plank + Iron Ingot = Advanced Tools
 14. Fire + Rock = Sand
 15. Sand + Fire = Glass
 

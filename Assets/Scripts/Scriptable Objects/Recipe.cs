@@ -39,7 +39,7 @@ public class Recipe : ScriptableObject
                 cnt.Add(s, 1);
             }
         }
-        foreach (Element s in RecipeElements)
+        foreach (Element s in elements)
         {
             if (cnt.ContainsKey(s))
             {

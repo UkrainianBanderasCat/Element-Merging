@@ -208,27 +208,29 @@ public class GameManager : MonoBehaviour
 
     void updateMergeSucessScreen()
     {
-        for(int i = 0; i < elementNames.Count; i++)
+        int j = 0;
+        int elementNamesCount = elementNames.Count;
+
+        float step = (4 / elementNamesCount);
+
+        Debug.Log(step);
+
+        float pos = -(elementNamesCount / 2);
+
+        Debug.Log(pos);
+
+        for (int i = 0; i < elementNamesCount; i++)
         {
             GameObject spriteDisplay = GameObject.Instantiate(elementSpriteDisplayPrefab, elementSpriteDisplayHolder.transform);
             GameObject nameDisplay = GameObject.Instantiate(elementNameDisplayPrefab, elementNameDisplayHolder.transform);
 
+            spriteDisplay.transform.localPosition = new Vector2(250f * pos, elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition.y);
+            nameDisplay.transform.localPosition = new Vector2(250f * pos, elementNameDisplayHolder.transform.GetChild(j).transform.localPosition.y);
+
             spriteDisplay.GetComponent<Image>().sprite = elementSpriteDisplay[i];
             nameDisplay.GetComponent<TMP_Text>().text = elementNames[i];
 
-        }
-
-        int j = 0;
-        for(float i =  - (elementNames.Count/2); i <= elementNames.Count / 2; i+= elementNames.Count * elementNames.Count/2)
-        {
-            
-            elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition = new Vector2(250f * i, elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition.y);
-            elementNameDisplayHolder.transform.GetChild(j).transform.localPosition = new Vector2(250f * i, elementNameDisplayHolder.transform.GetChild(j).transform.localPosition.y);
-
-            if (j < elementNames.Count)
-            {
-                j++;
-            }
+            pos += step;
         }
     }
 

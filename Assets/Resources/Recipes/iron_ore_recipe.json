@@ -1,0 +1,6 @@
+{
+    "RecipeID": "iron_ore",
+    "RecipeElementLeft": "tools",
+    "RecipeElementRight": "rock",
+    "RecipeOutputElement": "iron_ore"
+}

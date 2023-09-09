@@ -1,0 +1,6 @@
+{
+    "RecipeID": "rock",
+    "RecipeElementLeft": "fire",
+    "RecipeElementRight": "soil",
+    "RecipeOutputElement": "rock"
+}

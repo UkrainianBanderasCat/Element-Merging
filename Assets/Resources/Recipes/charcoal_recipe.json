@@ -1,0 +1,6 @@
+{
+    "RecipeID": "charcoal",
+    "RecipeElementLeft": "log",
+    "RecipeElementRight": "fire",
+    "RecipeOutputElement": "charcoal"
+}

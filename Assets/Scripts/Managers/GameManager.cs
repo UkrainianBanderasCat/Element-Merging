@@ -26,8 +26,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject worldElementObject;
     [SerializeField] private Transform worldElementHolder;
     [SerializeField] private GameObject mergeSucessScreen;
-    [SerializeField] private TextMeshProUGUI elementName;
-    [SerializeField] private Image elementSpriteDisplay;
+    [SerializeField] private GameObject elementNameDisplayHolder;
+    [SerializeField] private GameObject elementSpriteDisplayHolder;
+    [SerializeField] private GameObject elementNameDisplayPrefab;
+    [SerializeField] private GameObject elementSpriteDisplayPrefab;
+
+
+
+
     [SerializeField] private TextMeshProUGUI elementNameDisplay;
 
     // GUI Data
@@ -43,6 +49,14 @@ public class GameManager : MonoBehaviour
     public AudioClip elementMergeFailureSound;
     public bool playSoundEffects;
 
+    //Callback trace for the WorldElements (we can't add them in the foreach)
+    public List<WorldElement> WaitingElements = new List<WorldElement>();
+
+
+    //Name and sprites used to update the merge successful screen.
+    [SerializeField] private List<string> elementNames = new();
+    [SerializeField] private List<Sprite> elementSpriteDisplay = new();
+
     public GameManager()
     {
         instance = this;
@@ -50,6 +64,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        ElementManager.instance.LoadElements();
+        RecipeManager.instance.LoadRecipes();
+        
         if (SaveManager.instance.HasSaveData())
         {
             SaveManager.instance.Load();
@@ -60,37 +77,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MergeElements(Element leftElement, Element rightElement)
+    public void MergeElements(List<Element> elements)
     {
         foreach (Recipe recipe in RecipeManager.instance.recipes)
         {
+            
             // Matching Elements with Recipe
-            if ((recipe.GetRecipeElementLeft() == leftElement && recipe.GetRecipeElementRight() == rightElement)
-                || (recipe.GetRecipeElementLeft() == rightElement && recipe.GetRecipeElementRight() == leftElement))
+            if (recipe.CanCraftWith(elements))
             {
-                // Checking if element already has been merged
-                foreach (WorldElement worldElement in worldElements)
+
+                bool hasBeenDone = true;
+
+                foreach(Element element in recipe.GetRecipeOutputElements())
                 {
-                    if (worldElement.GetElement() == recipe.GetRecipeOutputElement())
+                    bool containsElement = false;
+                    foreach(WorldElement worldElement in worldElements)
                     {
-                        if (playSoundEffects)
+                        if(worldElement.GetElement() == element)
                         {
-                            AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                            containsElement = true;
                         }
+                        
+                    }
+
+                    if(!containsElement)
+                    {
+                        hasBeenDone = false;
+                        CreateElement(element, new Vector2(0f + Random.Range(0f, 2f), 0f + Random.Range(0f, 2f)));
                         return;
                     }
                 }
 
-                GameObject newElement = CreateElement(recipe.GetRecipeOutputElement(), new Vector2(0f, 0f));
+                Release();
+
+
+                if (hasBeenDone)
+                {
+                    AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                    return;
+                }
 
                 ShowMergeSucessScreen();
+                updateMergeSucessScreen();
+
+                NewMergedElement.Invoke();
 
                 // Playing Merge Audio
                 if (playSoundEffects)
                 {
                     AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
                 }
-                
+
                 SaveManager.instance.Save();
                 return;
             }
@@ -100,15 +137,32 @@ public class GameManager : MonoBehaviour
     public GameObject CreateElement(Element element, Vector2 position)
     {
         // Instantiating New Element
+        if (element == null)
+        {
+            Debug.LogError("Error: Unable to create null element");
+            return null;
+        }
+
         GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
         newElement.GetComponent<WorldElement>().Initialize(element);
-        worldElements.Add(newElement.GetComponent<WorldElement>());
-        elementName.text = element.GetName();
-        elementSpriteDisplay.sprite = element.GetSprite();
+        Hold(newElement);
+        elementNames.Add(element.GetName());
+        elementSpriteDisplay.Add(element.GetSprite());
 
         newElement.transform.position = position;
 
         return newElement;
+    }
+
+    void Hold(GameObject newElement)
+    {
+        WaitingElements.Add(newElement.GetComponent<WorldElement>());
+    }
+
+    public void Release()
+    {
+        WaitingElements.ForEach(element => worldElements.Add(element));
+        WaitingElements.Clear();
     }
 
     public void Update()
@@ -121,6 +175,8 @@ public class GameManager : MonoBehaviour
                 mergeSucessScreen.GetComponent<Animator>().SetTrigger("Hide");
                 mergeSucessScreenActive = false;
                 NewMergedElement.Invoke();
+                elementNames.Clear();
+                elementSpriteDisplay.Clear();
             }
         }
 
@@ -151,6 +207,32 @@ public class GameManager : MonoBehaviour
         return mergeSucessScreen;
     }
 
+    void updateMergeSucessScreen()
+    {
+        for(int i = 0; i < elementNames.Count; i++)
+        {
+            GameObject spriteDisplay = GameObject.Instantiate(elementSpriteDisplayPrefab, elementSpriteDisplayHolder.transform);
+            GameObject nameDisplay = GameObject.Instantiate(elementNameDisplayPrefab, elementNameDisplayHolder.transform);
+
+            spriteDisplay.GetComponent<Image>().sprite = elementSpriteDisplay[i];
+            nameDisplay.GetComponent<TMP_Text>().text = elementNames[i];
+
+        }
+
+        int j = 0;
+        for(float i =  - (elementNames.Count/2); i <= elementNames.Count / 2; i+= elementNames.Count * elementNames.Count/2)
+        {
+            
+            elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition = new Vector2(250f * i, elementSpriteDisplayHolder.transform.GetChild(j).transform.localPosition.y);
+            elementNameDisplayHolder.transform.GetChild(j).transform.localPosition = new Vector2(250f * i, elementNameDisplayHolder.transform.GetChild(j).transform.localPosition.y);
+
+            if (j < elementNames.Count)
+            {
+                j++;
+            }
+        }
+    }
+
     public void ShowMergeSucessScreen()
     {
         mergeSucessScreen.SetActive(true);
@@ -161,6 +243,8 @@ public class GameManager : MonoBehaviour
     {
         CreateElement(ElementManager.instance.GetElement("water"), new Vector2(-4f, 0f));
         CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
+        elementNames.Clear();
+        elementSpriteDisplay.Clear();
     }
 
 }

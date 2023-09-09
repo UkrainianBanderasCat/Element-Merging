@@ -1,0 +1,6 @@
+{
+    "RecipeID": "plant",
+    "RecipeElementLeft": "soil",
+    "RecipeElementRight": "water",
+    "RecipeOutputElement": "plant"
+}

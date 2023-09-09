@@ -25,6 +25,8 @@ public class MilestonesManager : MonoBehaviour
 
     [SerializeField] private int unlockedElementNumber;
 
+    List<Milestone> heldMilestones = new();
+
     public MilestonesManager()
     { instance = this; }
 
@@ -44,6 +46,8 @@ public class MilestonesManager : MonoBehaviour
         {
             ProcessMilestone(remainingMilestones[i]);
         }
+
+        ReleaseMilestones();
     }
 
     private void UpdateSuccessUI(Milestone milestone)
@@ -69,8 +73,22 @@ public class MilestonesManager : MonoBehaviour
     {
         milestone.IsCompleted = true;
         completedMilestones.Add(milestone);
-        remainingMilestones.Remove(milestone);
+        HoldMilestone(milestone);
 
+    }
+
+    void HoldMilestone(Milestone milestone)
+    {
+        heldMilestones.Add(milestone);
+    }
+
+    void ReleaseMilestones()
+    {
+        foreach(Milestone milestone in heldMilestones)
+        {
+            remainingMilestones.Remove(milestone);
+        }
+        heldMilestones.Clear();
     }
 
     private void DisplayMilestonePopUp(Milestone milestone)

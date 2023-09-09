@@ -1,30 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Game/Recipe")]
 public class Recipe : ScriptableObject
 {
 
     [SerializeField] private string RecipeID;
-    [SerializeField] private Element RecipeElementLeft;
-    [SerializeField] private Element RecipeElementRight;
-    [SerializeField] private Element RecipeOutputElement;
+    [SerializeField] private List<Element> RecipeElements;
+    [SerializeField] private List<Element> RecipeOutputElements;
 
+    //Get
     public string GetID()
     {
         return RecipeID;
     }
-    public Element GetRecipeElementLeft()
+    public List<Element> GetRecipeElements()
     {
-        return RecipeElementLeft;
+        return RecipeElements;
     }
-    public Element GetRecipeElementRight()
+
+    public List<Element> GetRecipeOutputElements()
     {
-        return RecipeElementRight;
+        return RecipeOutputElements;
     }
-    public Element GetRecipeOutputElement()
+
+    public bool CanCraftWith(List<Element> elements) //Code I shamelessly stole from stackoverflow to check if two lists (of the same type) have exactly the same elements in any order for any size of list.
     {
-        return RecipeOutputElement;
+        var cnt = new Dictionary<Element, int>();
+        foreach (Element s in RecipeElements)
+        {
+            if (cnt.ContainsKey(s))
+            {
+                cnt[s]++;
+            }
+            else
+            {
+                cnt.Add(s, 1);
+            }
+        }
+        foreach (Element s in RecipeElements)
+        {
+            if (cnt.ContainsKey(s))
+            {
+                cnt[s]--;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return cnt.Values.All(c => c == 0);
+    }
+
+    //Set
+    public void SetID(string id)
+    {
+        RecipeID = id;
+    }
+    public void SetRecipeElementLeft(Element element)
+    {
+        RecipeElementLeft = element;
+    }
+    public void SetRecipeElementRight(Element element)
+    {
+        RecipeElementRight = element;
+    }
+    public void SetRecipeOutputElement(Element element)
+    {
+        RecipeOutputElement = element;
     }
 
 }

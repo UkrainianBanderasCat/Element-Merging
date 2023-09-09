@@ -1141,15 +1141,15 @@ MonoBehaviour:
   - m_Index: 68
     m_Metrics:
       m_Width: 74.5
-      m_Height: 111.75
+      m_Height: 130
       m_HorizontalBearingX: 18.625
-      m_HorizontalBearingY: 111.75
+      m_HorizontalBearingY: 131
       m_HorizontalAdvance: 111.75
     m_GlyphRect:
       m_X: 847
       m_Y: 123
       m_Width: 76
-      m_Height: 112
+      m_Height: 107
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -1275,9 +1275,9 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 77
     m_Metrics:
-      m_Width: 93.125
+      m_Width: 90
       m_Height: 93.125
-      m_HorizontalBearingX: 0
+      m_HorizontalBearingX: 11.1
       m_HorizontalBearingY: 93.125
       m_HorizontalAdvance: 111.75
     m_GlyphRect:
@@ -1351,9 +1351,9 @@ MonoBehaviour:
   - m_Index: 82
     m_Metrics:
       m_Width: 74.5
-      m_Height: 74.5
+      m_Height: 88.04
       m_HorizontalBearingX: 18.625
-      m_HorizontalBearingY: 74.5
+      m_HorizontalBearingY: 91.3
       m_HorizontalAdvance: 111.75
     m_GlyphRect:
       m_X: 181
@@ -1425,9 +1425,9 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 87
     m_Metrics:
-      m_Width: 93.125
+      m_Width: 86.44
       m_Height: 93.125
-      m_HorizontalBearingX: 0
+      m_HorizontalBearingX: 10.8
       m_HorizontalBearingY: 93.125
       m_HorizontalAdvance: 111.75
     m_GlyphRect:
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   normalSpacingOffset: 0
   boldStyle: 0.75
   boldSpacing: 7
-  italicStyle: 35
+  italicStyle: 20
   tabSize: 10
 --- !u!28 &172866502349754052
 Texture2D:

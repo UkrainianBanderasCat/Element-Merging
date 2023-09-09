@@ -117,7 +117,11 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // TODO: Fill the function below with Code to Reset Progress
+    public void OpenURL(string link)
+    {
+        Application.OpenURL(link);
+    }
+
     public void ResetProgress() 
     {
         SaveManager.instance.ResetSaveData();

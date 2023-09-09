@@ -58,17 +58,13 @@ public class Recipe : ScriptableObject
     {
         RecipeID = id;
     }
-    public void SetRecipeElementLeft(Element element)
+    public void SetRecipeElements(List<Element> elements)
     {
-        RecipeElementLeft = element;
+        RecipeElements = elements;
     }
-    public void SetRecipeElementRight(Element element)
+    public void SetRecipeOutputElements(List<Element> elements)
     {
-        RecipeElementRight = element;
-    }
-    public void SetRecipeOutputElement(Element element)
-    {
-        RecipeOutputElement = element;
+        RecipeOutputElements = elements;
     }
 
 }

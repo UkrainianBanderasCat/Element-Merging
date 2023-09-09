@@ -18,9 +18,8 @@ public class RecipeManager : MonoBehaviour
     public class LoadedRecipe
     {
         public string RecipeID;
-        public string RecipeElementLeft;
-        public string RecipeElementRight;
-        public string RecipeOutputElement;
+        public string[] RecipeElements;
+        public string[] RecipeOutputElements;
     }
 
     public Recipe GetRecipe(string id)
@@ -38,6 +37,7 @@ public class RecipeManager : MonoBehaviour
 
     public void LoadRecipes()
     {
+        Debug.Log("Loading Recipes!");
         // Load all JSON files in the "Resources/Recipes" folder
         string folderPath = "Recipes"; // The folder path relative to "Resources"
         TextAsset[] jsonAssets = Resources.LoadAll<TextAsset>(folderPath);
@@ -53,9 +53,22 @@ public class RecipeManager : MonoBehaviour
             Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
             // Load the sprite from Resources
             recipe.SetID(loadedRecipe.RecipeID);
-            recipe.SetRecipeElementLeft(ElementManager.instance.GetElement(loadedRecipe.RecipeElementLeft));
-            recipe.SetRecipeElementRight(ElementManager.instance.GetElement(loadedRecipe.RecipeElementRight));
-            recipe.SetRecipeOutputElement(ElementManager.instance.GetElement(loadedRecipe.RecipeOutputElement));
+            Debug.Log(loadedRecipe.RecipeID);
+
+            List<Element> recipeElements = new List<Element>();
+            foreach (string e in loadedRecipe.RecipeElements)
+            {
+                recipeElements.Add(ElementManager.instance.GetElement(e));
+            }
+
+            List<Element> recipeOutputElements = new List<Element>();
+            foreach (string e in loadedRecipe.RecipeOutputElements)
+            {
+                recipeOutputElements.Add(ElementManager.instance.GetElement(e));
+            }
+
+            recipe.SetRecipeElements(recipeElements);
+            recipe.SetRecipeOutputElements(recipeOutputElements);
 
             recipes.Add(recipe);
         }

@@ -1,6 +1,0 @@
-{
-    "RecipeID": "raw_iron",
-    "RecipeElementLeft": "iron_ore",
-    "RecipeElementRight": "tools",
-    "RecipeOutputElement": "raw_iron"
-}

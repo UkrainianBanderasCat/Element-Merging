@@ -1,6 +1,10 @@
 {
     "RecipeID": "log",
-    "RecipeElementLeft": "tree",
-    "RecipeElementRight": "rock",
-    "RecipeOutputElement": "log"
+    "RecipeElements": [
+        "tree",
+        "rock"
+    ],
+    "RecipeOutputElements": [
+        "log"
+    ]
 }

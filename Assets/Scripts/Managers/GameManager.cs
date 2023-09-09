@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
                     {
                         hasBeenDone = false;
                         CreateElement(element, new Vector2(0f + Random.Range(0f, 2f), 0f + Random.Range(0f, 2f)));
-                        return;
                     }
                 }
 
@@ -245,6 +244,7 @@ public class GameManager : MonoBehaviour
         CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
         elementNames.Clear();
         elementSpriteDisplay.Clear();
+        Release();
     }
 
 }

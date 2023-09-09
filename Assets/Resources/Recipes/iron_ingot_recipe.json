@@ -1,6 +1,0 @@
-{
-    "RecipeID": "iron_ingot",
-    "RecipeElementLeft": "fire",
-    "RecipeElementRight": "raw_iron",
-    "RecipeOutputElement": "iron_ingot"
-}

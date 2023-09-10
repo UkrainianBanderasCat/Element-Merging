@@ -57,16 +57,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> elementNames = new();
     [SerializeField] private List<Sprite> elementSpriteDisplay = new();
 
-    public GameManager()
-    {
-        instance = this;
-    }
+    public GameManager() => instance = this;
 
     public void Start()
     {
         ElementManager.instance.LoadElements();
         RecipeManager.instance.LoadRecipes();
-        
+        MilestonesManager.instance.InitMilestones();
+
         if (SaveManager.instance.HasSaveData())
         {
             SaveManager.instance.Load();
@@ -212,8 +210,6 @@ public class GameManager : MonoBehaviour
         int elementNamesCount = elementNames.Count;
 
         float step = (4 / elementNamesCount);
-
-        Debug.Log(step);
 
         float pos = -(elementNamesCount / 2);
 

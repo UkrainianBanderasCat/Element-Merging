@@ -53,7 +53,6 @@ public class RecipeManager : MonoBehaviour
             Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
             // Load the sprite from Resources
             recipe.SetID(loadedRecipe.RecipeID);
-            Debug.Log(loadedRecipe.RecipeID);
 
             List<Element> recipeElements = new List<Element>();
             foreach (string e in loadedRecipe.RecipeElements)

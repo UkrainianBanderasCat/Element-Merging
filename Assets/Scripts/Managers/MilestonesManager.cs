@@ -27,8 +27,7 @@ public class MilestonesManager : MonoBehaviour
 
     List<Milestone> heldMilestones = new();
 
-    public MilestonesManager()
-    { instance = this; }
+    public MilestonesManager() => instance = this;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +35,14 @@ public class MilestonesManager : MonoBehaviour
         GameManager.instance.NewMergedElement += UpdateState;
         achievementPanel.SetActive(false);
         remainingMilestones = milestones;
+    }
+
+    public void InitMilestones()
+    {
+        foreach(Milestone milestone in milestones)
+        {
+            milestone.Init();
+        }
     }
 
     void UpdateState()
@@ -100,9 +107,9 @@ public class MilestonesManager : MonoBehaviour
     }
     private void GetReward(Milestone milestone)
     {
-        if (milestone.reward != null)
+        if (milestone.hasReward())
         {
-            GameManager.instance.CreateElement(milestone.reward, new Vector2(0f, 0f));
+            GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f));
         }
     }
 

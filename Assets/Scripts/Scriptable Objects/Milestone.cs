@@ -12,14 +12,17 @@ public class Milestone : ScriptableObject
     public string MilestoneDescription;
     public string MilestoneID;
     public Sprite MilestoneSprite;
-    public Element reward;
 
 
     //Condition Managing
     public int ConditionType;
 
     public int NecessaryAmount;
+    public string SelectedElementID;
     public Element SelectedElement;
+    public string rewardID;
+    public Element reward;
+    public List<string> SelectedElementsIDs = new List<string>();
     public List<Element> SelectedElements = new List<Element>();
     public List<Milestone> NeededMilestones = new List<Milestone>();
 
@@ -43,7 +46,6 @@ public class Milestone : ScriptableObject
         return MilestoneSprite;
     }
 
-
     public bool hasReward()
     {
         return !(reward is null);
@@ -60,6 +62,29 @@ public class Milestone : ScriptableObject
             CreateCondition();
         }
         return condition;
+    }
+
+    public void Init()
+    {
+        reward = ElementManager.instance.GetElement(rewardID);
+        if (SelectedElementsIDs != null)
+        {
+            foreach (string id in SelectedElementsIDs)
+            {
+                Element element = ElementManager.instance.GetElement(id);
+                if (element != null)
+                {
+                    SelectedElements.Add(element);
+                }
+                else
+                {
+                    Debug.LogError($"The Milestone \"{MilestoneName}\" has an invalid selected element ID: {id}");
+                }
+            }
+        }
+
+        if (SelectedElementID != "")
+            SelectedElement = ElementManager.instance.GetElement(SelectedElementID);
     }
 
     void CreateCondition()

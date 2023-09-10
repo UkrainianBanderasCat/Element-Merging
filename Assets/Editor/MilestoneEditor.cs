@@ -10,6 +10,7 @@ public class MilestoneEditor : Editor
     SerializedProperty MilestoneSpriteProp;
     SerializedProperty MilestoneNameProp;
     SerializedProperty MilestoneDescProp;
+    SerializedProperty MilestoneRewardIDProp;
     SerializedProperty MilestoneRewardProp;
     /*---------------------------------------------------------------------------*/
 
@@ -17,7 +18,9 @@ public class MilestoneEditor : Editor
     SerializedProperty ConditionTypeProp;
 
     SerializedProperty NecessaryAmountProp;
+    SerializedProperty SelectedElementIDProp;
     SerializedProperty SelectedElementProp;
+    SerializedProperty SelectedElementsIDsProp;
     SerializedProperty SelectedElementsProp;
     SerializedProperty NeededMilestonesProp;
 
@@ -31,11 +34,14 @@ public class MilestoneEditor : Editor
         MilestoneNameProp = serializedObject.FindProperty("MilestoneName");
         MilestoneDescProp = serializedObject.FindProperty("MilestoneDescription");
         MilestoneSpriteProp = serializedObject.FindProperty("MilestoneSprite");
+        MilestoneRewardIDProp = serializedObject.FindProperty("rewardID");
         MilestoneRewardProp = serializedObject.FindProperty("reward");
 
         ConditionTypeProp = serializedObject.FindProperty("ConditionType");
         NecessaryAmountProp = serializedObject.FindProperty("NecessaryAmount");
+        SelectedElementIDProp = serializedObject.FindProperty("SelectedElementID");
         SelectedElementProp = serializedObject.FindProperty("SelectedElement");
+        SelectedElementsIDsProp = serializedObject.FindProperty("SelectedElementsIDs");
         SelectedElementsProp = serializedObject.FindProperty("SelectedElements");
         NeededMilestonesProp = serializedObject.FindProperty("NeededMilestones");
 
@@ -48,6 +54,7 @@ public class MilestoneEditor : Editor
         EditorGUILayout.PropertyField(MilestoneSpriteProp);
         EditorGUILayout.PropertyField(MilestoneNameProp);
         EditorGUILayout.PropertyField(MilestoneDescProp);
+        EditorGUILayout.PropertyField(MilestoneRewardIDProp);
         EditorGUILayout.PropertyField(MilestoneRewardProp);
 
         ConditionTypeProp.intValue = EditorGUILayout.Popup(ConditionTypeProp.intValue, dropDownOptions);
@@ -57,9 +64,11 @@ public class MilestoneEditor : Editor
                 EditorGUILayout.PropertyField(NecessaryAmountProp);
                 break;
             case 1:
+                EditorGUILayout.PropertyField(SelectedElementIDProp);
                 EditorGUILayout.PropertyField(SelectedElementProp);
                 break;
             case 2:
+                EditorGUILayout.PropertyField(SelectedElementsIDsProp);
                 EditorGUILayout.PropertyField(SelectedElementsProp);
                 break;
             case 3:

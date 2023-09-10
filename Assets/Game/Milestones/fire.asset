@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e89450bd7f13b418362e6d3312fef1, type: 3}
   m_Name: fire
   m_EditorClassIdentifier: 
+  IsCompleted: 1
   MilestoneName: First Storm
   MilestoneDescription: You've made a tree that sets itself on fire.
   MilestoneID: five
   MilestoneSprite: {fileID: 21300000, guid: 6cd55a26c70368b49a17a20e889d22c7, type: 3}
-  reward: {fileID: 11400000, guid: 37a300499e862d9458fbd9aa3115c9f7, type: 2}
   ConditionType: 1
   NecessaryAmount: 0
+  SelectedElementID: tree
   SelectedElement: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
+  rewardID: fire
+  reward: {fileID: 11400000, guid: 37a300499e862d9458fbd9aa3115c9f7, type: 2}
+  SelectedElementsIDs: []
   SelectedElements: []
   NeededMilestones: []

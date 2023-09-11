@@ -172,8 +172,8 @@ public class GameManager : MonoBehaviour
                 mergeSucessScreen.GetComponent<Animator>().SetTrigger("Hide");
                 mergeSucessScreenActive = false;
                 NewMergedElement.Invoke();
-                elementNames.Clear();
-                elementSpriteDisplay.Clear();
+                ClearElementNames();
+                ClearElementSprites();
             }
         }
 
@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
 
         float pos = -(elementNamesCount / 2);
 
-        Debug.Log(pos);
+        //Debug.Log(pos);
 
         for (int i = 0; i < elementNamesCount; i++)
         {
@@ -240,9 +240,25 @@ public class GameManager : MonoBehaviour
     {
         CreateElement(ElementManager.instance.GetElement("water"), new Vector2(-4f, 0f));
         CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
-        elementNames.Clear();
-        elementSpriteDisplay.Clear();
+        ClearElementNames();
+        ClearElementSprites();
         Release();
+    }
+
+    void ClearElementNames()
+    {
+        elementNames.Clear();
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in elementNameDisplayHolder.transform) children.Add(child.gameObject);
+        children.ForEach(child => Destroy(child));
+    }
+
+    void ClearElementSprites()
+    {
+        elementSpriteDisplay.Clear();
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in elementSpriteDisplayHolder.transform) children.Add(child.gameObject);
+        children.ForEach(child => Destroy(child));
     }
 
 }

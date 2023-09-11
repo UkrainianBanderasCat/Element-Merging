@@ -53,7 +53,7 @@ public class ElementManager : MonoBehaviour
             // Load the sprite from Resources
             Sprite sprite = Resources.Load<Sprite>(loadedElement.ElementSpriteSrc);
 
-            Debug.Log("Loaded : " + loadedElement.ElementName);
+            //Debug.Log("Loaded : " + loadedElement.ElementName);
             element.SetName(loadedElement.ElementName);
             element.SetID(loadedElement.ElementID);
             element.SetSprite(sprite);

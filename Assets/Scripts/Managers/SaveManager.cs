@@ -94,7 +94,7 @@ public class SaveManager : MonoBehaviour
 
         foreach (ElementData element in elementsList.elements)
         {
-            GameManager.instance.CreateElement(ElementManager.instance.GetElement(element.id), element.position);
+            GameManager.instance.CreateElement(ElementManager.instance.GetElement(element.id), element.position, true);
         }
 
 

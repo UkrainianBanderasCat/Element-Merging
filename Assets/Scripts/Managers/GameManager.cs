@@ -61,8 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        ElementManager.instance.LoadElements();
-        RecipeManager.instance.LoadRecipes();
+        ModManager.instance.InitMods();
         MilestonesManager.instance.InitMilestones();
 
         if (SaveManager.instance.HasSaveData())
@@ -101,7 +100,7 @@ public class GameManager : MonoBehaviour
                     if(!containsElement)
                     {
                         hasBeenDone = false;
-                        CreateElement(element, new Vector2(0f + Random.Range(0f, 2f), 0f + Random.Range(0f, 2f)));
+                        CreateElement(element, new Vector2(0f + Random.Range(0f, 2f), 0f + Random.Range(0f, 2f)), false);
                     }
                 }
 
@@ -131,7 +130,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject CreateElement(Element element, Vector2 position)
+    public GameObject CreateElement(Element element, Vector2 position, bool silent)
     {
         // Instantiating New Element
         if (element == null)
@@ -143,8 +142,11 @@ public class GameManager : MonoBehaviour
         GameObject newElement = Instantiate(worldElementObject, worldElementHolder);
         newElement.GetComponent<WorldElement>().Initialize(element);
         Hold(newElement);
-        elementNames.Add(element.GetName());
-        elementSpriteDisplay.Add(element.GetSprite());
+        if (!silent)
+        {
+            elementNames.Add(element.GetName());
+            elementSpriteDisplay.Add(element.GetSprite());
+        }
 
         newElement.transform.position = position;
 
@@ -180,7 +182,7 @@ public class GameManager : MonoBehaviour
         // Element Name Display Management
         if (hoveringOverElement && !mergeSucessScreenActive)
         {
-            Vector3 hoveredElementPosition = hoveredElement.gameObject.transform.position;
+            Vector3 hoveredElementPosition = hoveredElement.gameObject.transform.position + new Vector3(.75f,.5f);
             elementNameDisplay.transform.position = hoveredElementPosition + elementNameDisplayTextOffset;
             //--Fixed animation for text--
             //elementNameDisplay.transform.position = Vector3.Lerp(hoveredElementPosition,
@@ -215,6 +217,15 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(pos);
 
+        int childCount = elementSpriteDisplayHolder.transform.childCount;
+
+        for(int i = 0; i < childCount; i++)
+        {
+            GameObject.Destroy(elementSpriteDisplayHolder.transform.GetChild(i).gameObject);
+            GameObject.Destroy(elementNameDisplayHolder.transform.GetChild(i).gameObject);
+
+        }
+
         for (int i = 0; i < elementNamesCount; i++)
         {
             GameObject spriteDisplay = GameObject.Instantiate(elementSpriteDisplayPrefab, elementSpriteDisplayHolder.transform);
@@ -238,8 +249,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadStarterElements()
     {
-        CreateElement(ElementManager.instance.GetElement("water"), new Vector2(-4f, 0f));
-        CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f));
+        CreateElement(ElementManager.instance.GetElement("water"), new Vector2(-4f, 0f), true);
+        CreateElement(ElementManager.instance.GetElement("soil"), new Vector2(4f, 0f), true);
         elementNames.Clear();
         elementSpriteDisplay.Clear();
         Release();

@@ -56,17 +56,18 @@ public class ElementManager : MonoBehaviour
                 // Load the sprite from Resources
                 Sprite sprite = LoadNewSprite(Path.Combine(Directory.GetParent(d).FullName, loadedElement.ElementSpriteSrc));
 
-            if (sprite == null)
-            {
-                continue;
-            }
+                if (sprite == null)
+                {
+                    continue;
+                }
 
-            //Debug.Log("Loaded : " + loadedElement.ElementName);
-            element.SetName(loadedElement.ElementName);
-            element.SetID(loadedElement.ElementID);
-            element.SetSprite(sprite);
-            
-            elements.Add(element);
+                //Debug.Log("Loaded : " + loadedElement.ElementName);
+                element.SetName(loadedElement.ElementName);
+                element.SetID(loadedElement.ElementID);
+                element.SetSprite(sprite);
+                
+                elements.Add(element);
+            }
         }
     }
 

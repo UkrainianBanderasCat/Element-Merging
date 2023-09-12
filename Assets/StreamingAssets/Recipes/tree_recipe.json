@@ -1,0 +1,10 @@
+{
+    "RecipeID": "tree",
+    "RecipeElements": [
+        "plant",
+        "water"
+    ],
+    "RecipeOutputElements": [
+        "tree"
+    ]
+}

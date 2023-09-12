@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject CreateElement(Element element, Vector2 position, bool silent)
+    public GameObject CreateElement(Element element, Vector2 position, bool silent = true)
     {
         // Instantiating New Element
         if (element == null)

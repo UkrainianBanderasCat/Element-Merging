@@ -20,9 +20,9 @@ MonoBehaviour:
   ConditionType: 1
   NecessaryAmount: 0
   SelectedElementID: tree
-  SelectedElement: {fileID: 11400000, guid: fd8cbfd9e744cdd479fb28afc8dddb59, type: 2}
+  SelectedElement: {fileID: 0}
   rewardID: fire
-  reward: {fileID: 11400000, guid: 37a300499e862d9458fbd9aa3115c9f7, type: 2}
+  reward: {fileID: 0}
   SelectedElementsIDs: []
   SelectedElements: []
   NeededMilestones: []

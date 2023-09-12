@@ -93,6 +93,7 @@ public class ElementManager : MonoBehaviour
             if (Tex2D.LoadImage(FileData))
                 Tex2D.filterMode = FilterMode.Point;// Load the imagedata into the texture (size is set automatically)
                 return Tex2D;                 // If data = readable -> return texture
+
         }
         return null;                     // Return null if load failed
     }

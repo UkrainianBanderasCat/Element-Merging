@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.IO;
 public class RecipeManager : MonoBehaviour
 {
 
@@ -35,41 +35,44 @@ public class RecipeManager : MonoBehaviour
         return null;
     }
 
-    public void LoadRecipes()
+    public void LoadRecipesInMod(string d)
     {
-        Debug.Log("Loading Recipes!");
-        // Load all JSON files in the "Resources/Recipes" folder
-        string folderPath = "Recipes"; // The folder path relative to "Resources"
-        TextAsset[] jsonAssets = Resources.LoadAll<TextAsset>(folderPath);
-
-        foreach (TextAsset jsonAsset in jsonAssets)
+        if (!(d.EndsWith("Recipes") || d.EndsWith("Recipes" + Path.DirectorySeparatorChar)))
         {
-            string json = jsonAsset.text;
+            return;
+        }
 
-            LoadedRecipe loadedRecipe = new LoadedRecipe();
-
-            loadedRecipe = JsonUtility.FromJson<LoadedRecipe>(json);
-
-            Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
-            // Load the sprite from Resources
-            recipe.SetID(loadedRecipe.RecipeID);
-
-            List<Element> recipeElements = new List<Element>();
-            foreach (string e in loadedRecipe.RecipeElements)
+        foreach (string filePath in Directory.GetFiles(d))
+        {
+            using (StreamReader sr = new StreamReader(filePath))
             {
-                recipeElements.Add(ElementManager.instance.GetElement(e));
+                string json = sr.ReadToEnd();
+
+                LoadedRecipe loadedRecipe = new LoadedRecipe();
+
+                loadedRecipe = JsonUtility.FromJson<LoadedRecipe>(json);
+
+                Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
+                // Load the sprite from Resources
+                recipe.SetID(loadedRecipe.RecipeID);
+
+                List<Element> recipeElements = new List<Element>();
+                foreach (string e in loadedRecipe.RecipeElements)
+                {
+                    recipeElements.Add(ElementManager.instance.GetElement(e));
+                }
+
+                List<Element> recipeOutputElements = new List<Element>();
+                foreach (string e in loadedRecipe.RecipeOutputElements)
+                {
+                    recipeOutputElements.Add(ElementManager.instance.GetElement(e));
+                }
+
+                recipe.SetRecipeElements(recipeElements);
+                recipe.SetRecipeOutputElements(recipeOutputElements);
+
+                recipes.Add(recipe);
             }
-
-            List<Element> recipeOutputElements = new List<Element>();
-            foreach (string e in loadedRecipe.RecipeOutputElements)
-            {
-                recipeOutputElements.Add(ElementManager.instance.GetElement(e));
-            }
-
-            recipe.SetRecipeElements(recipeElements);
-            recipe.SetRecipeOutputElements(recipeOutputElements);
-
-            recipes.Add(recipe);
         }
     }
 

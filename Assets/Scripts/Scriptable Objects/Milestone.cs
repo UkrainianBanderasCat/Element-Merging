@@ -66,8 +66,8 @@ public class Milestone : ScriptableObject
 
     public void Init()
     {
-        reward = ElementManager.instance.GetElement(rewardID);
-        if (SelectedElementsIDs != null)
+        if(rewardID != "")reward = ElementManager.instance.GetElement(rewardID);
+
         {
             foreach (string id in SelectedElementsIDs)
             {

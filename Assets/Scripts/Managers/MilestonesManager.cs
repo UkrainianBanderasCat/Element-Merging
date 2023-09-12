@@ -109,7 +109,7 @@ public class MilestonesManager : MonoBehaviour
     {
         if (milestone.hasReward())
         {
-            GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f));
+            GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f), true);
         }
     }
 

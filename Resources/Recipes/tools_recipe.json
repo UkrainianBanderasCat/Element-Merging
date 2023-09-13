@@ -1,0 +1,10 @@
+{
+    "RecipeID": "tools",
+    "RecipeElements": [
+        "log",
+        "rock"
+    ],
+    "RecipeOutputElements": [
+        "tools"
+    ]
+}

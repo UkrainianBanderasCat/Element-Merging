@@ -13,7 +13,7 @@ public class ModManager : MonoBehaviour
     public void InitMods()
     {
         // Load all JSON files in the "Resources/Elements" folder
-        string folderPath = Path.Combine(Application.persistentDataPath, "Mods"); // The folder path relative to "Resources"
+        string folderPath = Path.Combine(Application.dataPath, "StreamingAssets", "Mods"); // The folder path relative to "Resources"
         TextAsset[] jsonAssets = Resources.LoadAll<TextAsset>(folderPath);
 
         foreach (string dir in Directory.GetDirectories(folderPath))

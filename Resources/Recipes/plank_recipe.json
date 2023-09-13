@@ -1,0 +1,10 @@
+{
+    "RecipeID": "plank",
+    "RecipeElements": [
+        "log",
+        "tools"
+    ],
+    "RecipeOutputElements": [
+        "plank"
+    ]
+}

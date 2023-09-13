@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        Debug.developerConsoleVisible = true;
+        ElementManager.instance.LoadElements();
+        RecipeManager.instance.LoadRecipes();
         ModManager.instance.InitMods();
         MilestonesManager.instance.InitMilestones();
 
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject CreateElement(Element element, Vector2 position, bool silent)
+    public GameObject CreateElement(Element element, Vector2 position, bool silent = true)
     {
         // Instantiating New Element
         if (element == null)
@@ -182,7 +185,7 @@ public class GameManager : MonoBehaviour
         // Element Name Display Management
         if (hoveringOverElement && !mergeSucessScreenActive)
         {
-            Vector3 hoveredElementPosition = hoveredElement.gameObject.transform.position + new Vector3(.75f,.5f);
+            Vector3 hoveredElementPosition = hoveredElement.gameObject.transform.position;
             elementNameDisplay.transform.position = hoveredElementPosition + elementNameDisplayTextOffset;
             //--Fixed animation for text--
             //elementNameDisplay.transform.position = Vector3.Lerp(hoveredElementPosition,

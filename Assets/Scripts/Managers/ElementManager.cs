@@ -8,7 +8,6 @@ public class ElementManager : MonoBehaviour
     public static ElementManager instance;
 
     public List<Element> elements;
-    public List<Element> createdElements;
 
     [System.Serializable]
     public class LoadedElement
@@ -17,6 +16,13 @@ public class ElementManager : MonoBehaviour
         public string ElementID;
         public string ElementSpriteSrc;
     }
+
+    [System.Serializable]
+    public class LoadedElementsList
+    {
+        public LoadedElement[] elements;
+    }
+
 
     public ElementManager() => instance = this;
 
@@ -31,6 +37,40 @@ public class ElementManager : MonoBehaviour
         }
         Debug.LogError("Error: Unable to find any elements with the ID \"" + id + "\"");
         return null;
+    }
+
+    public void LoadElements()
+    {
+        // Load the JSON file from the "Resources" folder
+        TextAsset jsonTextAsset = Resources.Load<TextAsset>("Elements");
+
+        if (jsonTextAsset == null)
+        {
+            Debug.LogError("Elements JSON file not found in Resources.");
+            return;
+        }
+
+        LoadedElementsList loadedElementsList = JsonUtility.FromJson<LoadedElementsList>(jsonTextAsset.text);
+
+        foreach (LoadedElement loadedElement in loadedElementsList.elements)
+        {
+            Element element = ScriptableObject.CreateInstance<Element>();
+
+            // Load the sprite from Resources
+            Sprite sprite = Resources.Load<Sprite>(loadedElement.ElementSpriteSrc);
+
+            if (sprite == null)
+            {
+                Debug.LogError("Sprite not found for element: " + loadedElement.ElementName);
+                continue;
+            }
+
+            element.SetName(loadedElement.ElementName);
+            element.SetID(loadedElement.ElementID);
+            element.SetSprite(sprite);
+
+            elements.Add(element);
+        }
     }
 
 
@@ -56,10 +96,10 @@ public class ElementManager : MonoBehaviour
                 // Load the sprite from Resources
                 Sprite sprite = LoadNewSprite(Path.Combine(Directory.GetParent(d).FullName, loadedElement.ElementSpriteSrc));
 
-                if (sprite == null)
-                {
-                    continue;
-                }
+                // if (sprite == null)
+                // {
+                //     continue;
+                // }
 
                 //Debug.Log("Loaded : " + loadedElement.ElementName);
                 element.SetName(loadedElement.ElementName);

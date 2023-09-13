@@ -22,6 +22,12 @@ public class RecipeManager : MonoBehaviour
         public string[] RecipeOutputElements;
     }
 
+    [System.Serializable]
+    public class LoadedRecipesList
+    {
+        public LoadedRecipe[] recipes;
+    }
+
     public Recipe GetRecipe(string id)
     {
         foreach (Recipe recipe in recipes)
@@ -33,6 +39,42 @@ public class RecipeManager : MonoBehaviour
         }
         Debug.LogError("Error: Unable to find any recipes of the ID \"" + id + "\"");
         return null;
+    }
+
+    public void LoadRecipes()
+    {
+        TextAsset jsonTextAsset = Resources.Load<TextAsset>("Recipes");
+
+        if (jsonTextAsset == null)
+        {
+            Debug.LogError("Recipes JSON file not found in Resources.");
+            return;
+        }
+
+        LoadedRecipesList loadedRecipesList = JsonUtility.FromJson<LoadedRecipesList>(jsonTextAsset.text);
+
+        foreach (LoadedRecipe loadedRecipe in loadedRecipesList.recipes)
+        {
+            Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.SetID(loadedRecipe.RecipeID);
+
+            List<Element> recipeElements = new List<Element>();
+            foreach (string e in loadedRecipe.RecipeElements)
+            {
+                recipeElements.Add(ElementManager.instance.GetElement(e));
+            }
+
+            List<Element> recipeOutputElements = new List<Element>();
+            foreach (string e in loadedRecipe.RecipeOutputElements)
+            {
+                recipeOutputElements.Add(ElementManager.instance.GetElement(e));
+            }
+
+            recipe.SetRecipeElements(recipeElements);
+            recipe.SetRecipeOutputElements(recipeOutputElements);
+
+            recipes.Add(recipe);
+        }
     }
 
     public void LoadRecipesInMod(string d)

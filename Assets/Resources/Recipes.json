@@ -1,0 +1,124 @@
+{
+    "recipes": [
+        {
+            "RecipeID": "plant",
+            "RecipeElements": [
+                "soil",
+                "water"
+            ],
+            "RecipeOutputElements": [
+                "plant"
+            ]
+        },
+        {
+            "RecipeID": "tree",
+            "RecipeElements": [
+                "plant",
+                "water"
+            ],
+            "RecipeOutputElements": [
+                "tree"
+            ]
+        },
+        {
+            "RecipeID": "rock",
+            "RecipeElements": [
+                "fire",
+                "soil"
+            ],
+            "RecipeOutputElements": [
+                "rock"
+            ]
+        },
+        {
+            "RecipeID": "log",
+            "RecipeElements": [
+                "tree",
+                "rock"
+            ],
+            "RecipeOutputElements": [
+                "log"
+            ]
+        },
+        {
+            "RecipeID": "tools",
+            "RecipeElements": [
+                "log",
+                "rock"
+            ],
+            "RecipeOutputElements": [
+                "tools"
+            ]
+        },
+        {
+            "RecipeID": "plank",
+            "RecipeElements": [
+                "log",
+                "tools"
+            ],
+            "RecipeOutputElements": [
+                "plank"
+            ]
+        },
+        {
+            "RecipeID": "campfire",
+            "RecipeElements": [
+                "fire",
+                "tree"
+            ],
+            "RecipeOutputElements": [
+                "campfire"
+            ]
+        },
+        {
+            "RecipeID": "charcoal",
+            "RecipeElements": [
+                "log",
+                "fire"
+            ],
+            "RecipeOutputElements": [
+                "charcoal"
+            ]
+        },
+        {
+            "RecipeID": "iron_ore",
+            "RecipeElements": [
+                "tools",
+                "rock"
+            ],
+            "RecipeOutputElements": [
+                "iron_ore"
+            ]
+        },
+        {
+            "RecipeID": "raw_iron",
+            "RecipeElements": [
+                "iron_ore",
+                "tools"
+            ],
+            "RecipeOutputElements": [
+                "raw_iron"
+            ]
+        },
+        {
+            "RecipeID": "iron_ingot",
+            "RecipeElements": [
+                "fire",
+                "raw_iron"
+            ],
+            "RecipeOutputElements": [
+                "iron_ingot"
+            ]
+        },
+        {
+            "RecipeID": "advanced_tools",
+            "RecipeElements": [
+                "plank",
+                "iron_ore"
+            ],
+            "RecipeOutputElements": [
+                "advanced_tools"
+            ]
+        }
+    ]
+}

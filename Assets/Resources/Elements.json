@@ -1,0 +1,79 @@
+{
+    "elements": [
+        {
+            "ElementName": "Soil",
+            "ElementID": "soil",
+            "ElementSpriteSrc": "Soil"
+        },
+        {
+            "ElementName": "Water",
+            "ElementID": "water",
+            "ElementSpriteSrc": "Water"
+        },
+        {
+            "ElementName": "Plant",
+            "ElementID": "plant",
+            "ElementSpriteSrc": "Plant"
+        },
+        {
+            "ElementName": "Tree",
+            "ElementID": "tree",
+            "ElementSpriteSrc": "Tree"
+        },
+        {
+            "ElementName": "Fire",
+            "ElementID": "fire",
+            "ElementSpriteSrc": "Fire"
+        },
+        {
+            "ElementName": "Rock",
+            "ElementID": "rock",
+            "ElementSpriteSrc": "Rock"
+        },
+        {
+            "ElementName": "Log",
+            "ElementID": "log",
+            "ElementSpriteSrc": "Log"
+        },
+        {
+            "ElementName": "Tools",
+            "ElementID": "tools",
+            "ElementSpriteSrc": "Tools"
+        },
+        {
+            "ElementName": "Plank",
+            "ElementID": "plank",
+            "ElementSpriteSrc": "Plank"
+        },
+        {
+            "ElementName": "Campfire",
+            "ElementID": "campfire",
+            "ElementSpriteSrc": "Campfire"
+        },
+        {
+            "ElementName": "Charcoal",
+            "ElementID": "charcoal",
+            "ElementSpriteSrc": "Charcoal"
+        },
+        {
+            "ElementName": "Iron Ore",
+            "ElementID": "iron_ore",
+            "ElementSpriteSrc": "Iron_Ore"
+        },
+        {
+            "ElementName": "Raw Iron",
+            "ElementID": "raw_iron",
+            "ElementSpriteSrc": "Raw_Iron"
+        },
+        {
+            "ElementName": "Iron Ingot",
+            "ElementID": "iron_ingot",
+            "ElementSpriteSrc": "Iron_Ingot"
+        },
+        {
+            "ElementName": "Advanced Tools",
+            "ElementID": "advanced_tools",
+            "ElementSpriteSrc": "Advanced_Tools"
+        }
+    ]
+}

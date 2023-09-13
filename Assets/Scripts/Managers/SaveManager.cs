@@ -116,9 +116,8 @@ public class SaveManager : MonoBehaviour
 
     public bool HasSaveData()
     {
-        /*hasSaveData = PlayerPrefs.HasKey("elementData");
+        hasSaveData = PlayerPrefs.HasKey("elementData");
         Debug.Log(hasSaveData);
-        return hasSaveData;*/
-        return false;
+        return hasSaveData;
     }
 }

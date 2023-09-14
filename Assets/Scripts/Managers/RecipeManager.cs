@@ -61,13 +61,29 @@ public class RecipeManager : MonoBehaviour
             List<Element> recipeElements = new List<Element>();
             foreach (string e in loadedRecipe.RecipeElements)
             {
-                recipeElements.Add(ElementManager.instance.GetElement(e));
+                Element element = ElementManager.instance.GetElement(e);
+                if (element != null)
+                {
+                    recipeElements.Add(element);
+                }
+                else
+                {
+                    Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
+                }
             }
 
             List<Element> recipeOutputElements = new List<Element>();
             foreach (string e in loadedRecipe.RecipeOutputElements)
             {
-                recipeOutputElements.Add(ElementManager.instance.GetElement(e));
+                Element element = ElementManager.instance.GetElement(e);
+                if (element != null)
+                {
+                    recipeOutputElements.Add(element);
+                }
+                else
+                {
+                    Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
+                }
             }
 
             recipe.SetRecipeElements(recipeElements);
@@ -79,23 +95,21 @@ public class RecipeManager : MonoBehaviour
 
     public void LoadRecipesInMod(string d)
     {
-        if (!(d.EndsWith("Recipes") || d.EndsWith("Recipes" + Path.DirectorySeparatorChar)))
-        {
-            return;
-        }
+        // if (!(d.EndsWith("Recipes") || d.EndsWith("Recipes" + Path.DirectorySeparatorChar)))
+        // {
+        //     return;
+        // }
 
-        foreach (string filePath in Directory.GetFiles(d))
+        string filePath = Path.Combine(d, "Recipes.json");
+        using (StreamReader sr = new StreamReader(filePath))
         {
-            using (StreamReader sr = new StreamReader(filePath))
+            string json = sr.ReadToEnd();
+
+            LoadedRecipesList loadedRecipesList = JsonUtility.FromJson<LoadedRecipesList>(json);
+
+            foreach (LoadedRecipe loadedRecipe in loadedRecipesList.recipes)
             {
-                string json = sr.ReadToEnd();
-
-                LoadedRecipe loadedRecipe = new LoadedRecipe();
-
-                loadedRecipe = JsonUtility.FromJson<LoadedRecipe>(json);
-
                 Recipe recipe = ScriptableObject.CreateInstance<Recipe>();
-                // Load the sprite from Resources
                 recipe.SetID(loadedRecipe.RecipeID);
 
                 List<Element> recipeElements = new List<Element>();

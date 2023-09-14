@@ -76,36 +76,37 @@ public class ElementManager : MonoBehaviour
 
     public void LoadElementsInMod(string d)
     {
-        if (!(d.EndsWith("Elements") || d.EndsWith("Elements" + Path.DirectorySeparatorChar)))
-        {
-            return;
-        }
+        // if (!(d.EndsWith("Elements") || d.EndsWith("Elements" + Path.DirectorySeparatorChar)))
+        // {
+        //     return;
+        // }
 
-        foreach (string filePath in Directory.GetFiles(d))
+        
+        string filePath = Path.Combine(d, "Elements.json");
+        Debug.Log(filePath);
+        using (StreamReader sr = new StreamReader(filePath))
         {
-            using (StreamReader sr = new StreamReader(filePath))
+            string json = sr.ReadToEnd();
+
+            LoadedElementsList loadedElementsList = JsonUtility.FromJson<LoadedElementsList>(json);
+
+            foreach (LoadedElement loadedElement in loadedElementsList.elements)
             {
-                string json = sr.ReadToEnd();
-
-                LoadedElement loadedElement = new LoadedElement();
-                loadedElement = JsonUtility.FromJson<LoadedElement>(json);
-
                 Element element = ScriptableObject.CreateInstance<Element>();
-
 
                 // Load the sprite from Resources
                 Sprite sprite = LoadNewSprite(Path.Combine(Directory.GetParent(d).FullName, loadedElement.ElementSpriteSrc));
 
-                // if (sprite == null)
-                // {
-                //     continue;
-                // }
+                if (sprite == null)
+                {
+                    Debug.LogError("Sprite not found for element: " + loadedElement.ElementName);
+                    continue;
+                }
 
-                //Debug.Log("Loaded : " + loadedElement.ElementName);
                 element.SetName(loadedElement.ElementName);
                 element.SetID(loadedElement.ElementID);
                 element.SetSprite(sprite);
-                
+
                 elements.Add(element);
             }
         }

@@ -1,0 +1,14 @@
+{
+    "recipes": [
+        {
+            "RecipeID": "amogus",
+            "RecipeElements": [
+                "tree",
+                "fire"
+            ],
+            "RecipeOutputElements": [
+                "amogus"
+            ]
+        }
+    ]
+}

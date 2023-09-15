@@ -1,0 +1,34 @@
+{
+    "recipes": [
+        {
+            "RecipeID": "shovel",
+            "RecipeElements": [
+                "log",
+                "iron_ingot"
+            ],
+            "RecipeOutputElements": [
+                "shovel"
+            ]
+        },
+        {
+            "RecipeID": "hammer",
+            "RecipeElements": [
+                "log",
+                "iron_block"
+            ],
+            "RecipeOutputElements": [
+                "hammer"
+            ]
+        },
+        {
+            "RecipeID": "saw",
+            "RecipeElements": [
+                "log",
+                "iron_sheet"
+            ],
+            "RecipeOutputElements": [
+                "saw"
+            ]
+        }
+    ]
+}

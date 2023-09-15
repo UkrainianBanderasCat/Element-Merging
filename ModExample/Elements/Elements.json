@@ -1,0 +1,9 @@
+{
+    "elements": [
+        {
+            "ElementName": "Amogus",
+            "ElementID": "amogus",
+            "ElementSpriteSrc": "Sprites/PinkAmogus.png"
+        }
+    ]
+}

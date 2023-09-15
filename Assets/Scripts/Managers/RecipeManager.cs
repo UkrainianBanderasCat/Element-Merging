@@ -37,7 +37,7 @@ public class RecipeManager : MonoBehaviour
                 return recipe;
             }
         }
-        Debug.LogError("Error: Unable to find any recipes of the ID \"" + id + "\"");
+        //Debug.LogError("Error: Unable to find any recipes of the ID \"" + id + "\"");
         return null;
     }
 
@@ -68,7 +68,7 @@ public class RecipeManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
+                    //Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
                 }
             }
 
@@ -82,7 +82,7 @@ public class RecipeManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
+                    //Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
                 }
             }
 

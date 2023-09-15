@@ -35,7 +35,7 @@ public class ElementManager : MonoBehaviour
                 return element;
             }
         }
-        Debug.LogError("Error: Unable to find any elements with the ID \"" + id + "\"");
+        //Debug.LogError("Error: Unable to find any elements with the ID \"" + id + "\"");
         return null;
     }
 
@@ -46,7 +46,7 @@ public class ElementManager : MonoBehaviour
 
         if (jsonTextAsset == null)
         {
-            Debug.LogError("Elements JSON file not found in Resources.");
+            //Debug.LogError("Elements JSON file not found in Resources.");
             return;
         }
 
@@ -61,7 +61,7 @@ public class ElementManager : MonoBehaviour
 
             if (sprite == null)
             {
-                Debug.LogError("Sprite not found for element: " + loadedElement.ElementName);
+                //Debug.LogError("Sprite not found for element: " + loadedElement.ElementName);
                 continue;
             }
 

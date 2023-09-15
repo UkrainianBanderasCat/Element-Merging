@@ -8,15 +8,16 @@ public class ModManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Debug.Log(Application.persistentDataPath);
     }
     public void InitMods()
     {
+        Debug.Log(Application.persistentDataPath);
         // Path to the StreamingAssets folder
-        string streamingAssetsPath = Application.dataPath + "/StreamingAssets";
+        string projectPath = Application.dataPath;
 
         // Path to the Mods folder within StreamingAssets
-        string modsFolderPath = Path.Combine(streamingAssetsPath, "Mods");
+        string modsFolderPath = Path.Combine(projectPath, "Mods");
+        Debug.Log(modsFolderPath);
 
         // Check if the Mods folder exists
         if (!Directory.Exists(modsFolderPath))

@@ -100,7 +100,7 @@ public class RecipeManager : MonoBehaviour
         //     return;
         // }
 
-        string filePath = Path.Combine(d, "Recipes.json");
+        string filePath = Path.Combine(d, "Recipes", "Recipes.json");
         using (StreamReader sr = new StreamReader(filePath))
         {
             string json = sr.ReadToEnd();

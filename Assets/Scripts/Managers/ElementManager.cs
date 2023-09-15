@@ -82,7 +82,7 @@ public class ElementManager : MonoBehaviour
         // }
 
         
-        string filePath = Path.Combine(d, "Elements.json");
+        string filePath = Path.Combine(d, "Elements", "Elements.json");
         Debug.Log(filePath);
         using (StreamReader sr = new StreamReader(filePath))
         {
@@ -95,7 +95,7 @@ public class ElementManager : MonoBehaviour
                 Element element = ScriptableObject.CreateInstance<Element>();
 
                 // Load the sprite from Resources
-                Sprite sprite = LoadNewSprite(Path.Combine(Directory.GetParent(d).FullName, loadedElement.ElementSpriteSrc));
+                Sprite sprite = LoadNewSprite(Path.Combine(d, loadedElement.ElementSpriteSrc));
 
                 if (sprite == null)
                 {
@@ -112,22 +112,22 @@ public class ElementManager : MonoBehaviour
         }
     }
 
-    public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 16f, SpriteMeshType spriteType = SpriteMeshType.Tight)
+    public Sprite LoadNewSprite(string FilePath, float pixelsPerUnit = 16f, SpriteMeshType spriteType = SpriteMeshType.Tight)
     {
 
         // Load a PNG or JPG image from disk to a Texture2D, assign this texture to a new sprite and return its reference
 
-        Texture2D SpriteTexture = LoadTexture(FilePath);
+        Texture2D spriteTexture = LoadTexture(FilePath);
 
-        if (SpriteTexture == null)
+        if (spriteTexture == null)
         {
             Debug.Log("Failed to load texture with path: " + FilePath);
             return null;
         }
 
-        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), PixelsPerUnit, 0, spriteType);
+        Sprite newSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), Vector2.one * 0.5f, pixelsPerUnit, 0, spriteType);
 
-        return NewSprite;
+        return newSprite;
     }
     
     public Texture2D LoadTexture(string FilePath)
@@ -138,6 +138,7 @@ public class ElementManager : MonoBehaviour
 
         Texture2D Tex2D;
         byte[] FileData;
+        Debug.Log(FilePath);
 
         if (File.Exists(FilePath))
         {
@@ -145,9 +146,11 @@ public class ElementManager : MonoBehaviour
             Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
             if (Tex2D.LoadImage(FileData))
                 Tex2D.filterMode = FilterMode.Point;// Load the imagedata into the texture (size is set automatically)
-                return Tex2D;                 // If data = readable -> return texture
+            return Tex2D;                 // If data = readable -> return texture
 
         }
+
+        Debug.Log("File not exists");
         return null;                     // Return null if load failed
     }
 }

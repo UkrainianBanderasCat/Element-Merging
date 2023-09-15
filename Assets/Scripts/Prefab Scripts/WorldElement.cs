@@ -108,6 +108,8 @@ public class WorldElement : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(GameManager.instance.elementDropSound, new Vector2(0f, 0f), 0.3f);
         }
+
+        SaveManager.instance.Save();
     }
 
     private bool IsObjectInView()
@@ -126,7 +128,7 @@ public class WorldElement : MonoBehaviour
                viewportPosition.y >= 0 && viewportPosition.y <= 1;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (dragging)
         {

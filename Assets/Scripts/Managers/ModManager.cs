@@ -22,8 +22,8 @@ public class ModManager : MonoBehaviour
         // Check if the Mods folder exists
         if (!Directory.Exists(modsFolderPath))
         {
-            Debug.LogError("Mods folder not found in StreamingAssets.");
-            return;
+            //Debug.LogError("Mods folder not found in StreamingAssets.");
+            Directory.CreateDirectory(modsFolderPath);
         }
 
         // Get all subdirectories (each subdirectory represents a mod)

@@ -12,6 +12,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private GameObject backgroundColorResetButton;
     [SerializeField] private Toggle musicPlayerStateToggle;
     [SerializeField] private Toggle soundEffectsStateToggle;
+    [SerializeField] private TMP_Text versionText;
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private AudioSource musicPlayer;
@@ -60,6 +61,8 @@ public class SettingsManager : MonoBehaviour
         }
 
         UpdateSoundEffectsState();
+
+        versionText.text = "v" + Application.version;
     }
 
     void Update()

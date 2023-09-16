@@ -7,6 +7,7 @@ using UnityEditor;
 public class MilestoneEditor : Editor
 {
     /*-----------------Milestone Info--------------------------------------------*/
+    SerializedProperty IsCompletedProp;
     SerializedProperty MilestoneSpriteProp;
     SerializedProperty MilestoneNameProp;
     SerializedProperty MilestoneDescProp;
@@ -31,6 +32,7 @@ public class MilestoneEditor : Editor
 
     public void OnEnable()
     {
+        IsCompletedProp = serializedObject.FindProperty("IsCompleted");
         MilestoneNameProp = serializedObject.FindProperty("MilestoneName");
         MilestoneDescProp = serializedObject.FindProperty("MilestoneDescription");
         MilestoneSpriteProp = serializedObject.FindProperty("MilestoneSprite");
@@ -51,6 +53,7 @@ public class MilestoneEditor : Editor
     {
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(IsCompletedProp);
         EditorGUILayout.PropertyField(MilestoneSpriteProp);
         EditorGUILayout.PropertyField(MilestoneNameProp);
         EditorGUILayout.PropertyField(MilestoneDescProp);

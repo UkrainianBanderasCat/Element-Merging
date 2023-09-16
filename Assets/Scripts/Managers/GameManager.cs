@@ -65,8 +65,9 @@ public class GameManager : MonoBehaviour
         ElementManager.instance.LoadElements();
         RecipeManager.instance.LoadRecipes();
         ModManager.instance.InitMods();
-        MilestonesManager.instance.InitMilestones();
 
+        MilestonesManager.instance.InitMilestones();
+        
         if (SaveManager.instance.HasSaveData())
         {
             SaveManager.instance.Load();
@@ -75,13 +76,13 @@ public class GameManager : MonoBehaviour
         {
             LoadStarterElements();
         }
+        
     }
 
     public void MergeElements(List<Element> elements)
     {
         foreach (Recipe recipe in RecipeManager.instance.recipes)
         {
-            
             // Matching Elements with Recipe
             if (recipe.CanCraftWith(elements))
             {
@@ -127,10 +128,11 @@ public class GameManager : MonoBehaviour
                     AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
                 }
 
-                SaveManager.instance.Save();
                 return;
             }
         }
+
+        SaveManager.instance.Save();
     }
 
     public GameObject CreateElement(Element element, Vector2 position, bool silent = true)

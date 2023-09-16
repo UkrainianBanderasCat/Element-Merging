@@ -51,11 +51,6 @@
             "ElementSpriteSrc": "Campfire"
         },
         {
-            "ElementName": "Charcoal",
-            "ElementID": "charcoal",
-            "ElementSpriteSrc": "Charcoal"
-        },
-        {
             "ElementName": "Iron Ore",
             "ElementID": "iron_ore",
             "ElementSpriteSrc": "Iron_Ore"

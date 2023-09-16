@@ -11,7 +11,7 @@ public class ModManager : MonoBehaviour
     }
     public void InitMods()
     {
-        Debug.Log(Application.persistentDataPath);
+        // Debug.Log(Application.persistentDataPath);
         // Path to the StreamingAssets folder
         string projectPath = Application.dataPath;
 
@@ -37,7 +37,7 @@ public class ModManager : MonoBehaviour
 
         foreach (string modDirectory in modDirectories)
         {
-            Debug.Log(modDirectory);
+            // Debug.Log(modDirectory);
             ElementManager.instance.LoadElementsInMod(modDirectory);
             RecipeManager.instance.LoadRecipesInMod(modDirectory);
         }

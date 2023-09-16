@@ -1298,8 +1298,7 @@ MonoBehaviour:
   playSoundEffects: 0
   WaitingElements: []
   elementNames: []
-  elementSpriteDisplay:
-  - {fileID: 0}
+  elementSpriteDisplay: []
 --- !u!4 &286932318
 Transform:
   m_ObjectHideFlags: 0
@@ -1334,6 +1333,8 @@ MonoBehaviour:
   milestones:
   - {fileID: 11400000, guid: 7adab5b8aad47114d8d821f5f1764337, type: 2}
   - {fileID: 11400000, guid: 916171f7c4557494cb645db9f575d235, type: 2}
+  remainingMilestones: []
+  completedMilestones: []
   unlockedElementNumber: 0
 --- !u!114 &286932320
 MonoBehaviour:

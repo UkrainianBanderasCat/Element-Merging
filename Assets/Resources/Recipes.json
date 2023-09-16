@@ -63,21 +63,11 @@
         {
             "RecipeID": "campfire",
             "RecipeElements": [
-                "charcoal",
+                "fire",
                 "log"
             ],
             "RecipeOutputElements": [
                 "campfire"
-            ]
-        },
-        {
-            "RecipeID": "charcoal",
-            "RecipeElements": [
-                "log",
-                "fire"
-            ],
-            "RecipeOutputElements": [
-                "charcoal"
             ]
         },
         {

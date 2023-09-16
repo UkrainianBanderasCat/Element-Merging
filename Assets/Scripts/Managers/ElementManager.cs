@@ -83,7 +83,7 @@ public class ElementManager : MonoBehaviour
 
         
         string filePath = Path.Combine(d, "Elements", "Elements.json");
-        Debug.Log(filePath);
+        // Debug.Log(filePath);
         using (StreamReader sr = new StreamReader(filePath))
         {
             string json = sr.ReadToEnd();

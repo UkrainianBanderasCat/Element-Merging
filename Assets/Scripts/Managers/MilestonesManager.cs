@@ -24,6 +24,9 @@ public class MilestonesManager : MonoBehaviour
 
     private bool isPlayingAnimation;
 
+
+    public List<GameObject> unlockablePanels = new();
+
     [SerializeField] private int unlockedElementNumber;
 
     List<Milestone> heldMilestones = new();
@@ -89,6 +92,8 @@ public class MilestonesManager : MonoBehaviour
     public void UpdateList(Milestone milestone)
     {
         milestone.IsCompleted = true;
+        if(milestone.UnlockedPanel != -1)
+            unlockablePanels[milestone.UnlockedPanel].SetActive(true);
         completedMilestones.Add(milestone);
         HoldMilestone(milestone);
     }
@@ -111,16 +116,13 @@ public class MilestonesManager : MonoBehaviour
     {
         achievementPanel.SetActive(true);
         isPlayingAnimation = true;
-        timerStart = Time.time;
+        timerStart = Time.time; 
         return;
     }
     private void GetReward(Milestone milestone)
     {
-        if (milestone.hasReward())
-        {
-            GameObject element = GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f), true);
-            GameManager.instance.Release();
-        }
+        GameObject element = GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f), true);
+        GameManager.instance.Release();
     }
 
     public Milestone GetMilestoneByName(string name)

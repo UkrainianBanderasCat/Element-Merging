@@ -129,6 +129,17 @@
             "RecipeOutputElements": [
                 "glass"
             ]
+        },
+	{
+            "RecipeID": "chlorine",
+            "RecipeElements": [
+                "rock",
+                "fire",
+		"soil"
+            ],
+            "RecipeOutputElements": [
+                "chlorine"
+            ]
         }
     ]
 }

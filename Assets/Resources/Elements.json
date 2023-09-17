@@ -79,6 +79,11 @@
             "ElementName": "Glass",
             "ElementID": "glass",
             "ElementSpriteSrc": "Glass"
+        },
+{
+            "ElementName": "Chlorine",
+            "ElementID": "chlorine",
+            "ElementSpriteSrc": "Chlorine"
         }
     ]
 }

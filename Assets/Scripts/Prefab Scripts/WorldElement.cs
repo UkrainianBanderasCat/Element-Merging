@@ -14,6 +14,8 @@ public class WorldElement : MonoBehaviour
     private bool dragging = false;
     private bool hovering = false;
     private bool hoveringOverElement = false;
+    bool hoveringOverThreeMerger = false;
+    GameObject collidingMerger;
     private Vector2 dragDelta;
     private Vector2 previousPosition;
 
@@ -98,6 +100,14 @@ public class WorldElement : MonoBehaviour
             collidingWorldElement = null;
         }
 
+        if (collidingMerger != null)
+        {
+            transform.position = previousPosition;
+            ThreeMerger.instance.UpdateSpot(collidingMerger, element);
+            collidingMerger = null;
+        }
+
+
         if (!IsObjectInView())
         {
             // Return to the previous position
@@ -134,6 +144,17 @@ public class WorldElement : MonoBehaviour
         {
             collidingWorldElement = collision.gameObject.GetComponent<WorldElement>();
             hoveringOverElement = true;
+
+            print(collision.transform.parent);
+
+
+
+            if (collision.CompareTag("merger"))
+            {
+                hoveringOverThreeMerger = true;
+                collidingMerger = collision.gameObject;
+            }
+
         }
     }
 
@@ -141,6 +162,8 @@ public class WorldElement : MonoBehaviour
     {
         collidingWorldElement = null;
         hoveringOverElement = false;
+        hoveringOverThreeMerger = false;
+        collidingMerger = null;
     }
 
 

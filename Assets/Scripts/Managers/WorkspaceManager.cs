@@ -20,6 +20,12 @@ public class WorkspaceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            size = 5f;
+            worldElementsHolder.transform.position = new Vector2(0, 0);
+        }
+        
         if (Input.GetMouseButton(1))
         {
             float mouseX = Input.GetAxis("Mouse X");

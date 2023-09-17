@@ -8,21 +8,39 @@ public class ModManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Debug.Log(Application.persistentDataPath);
     }
     public void InitMods()
     {
-        // Load all JSON files in the "Resources/Elements" folder
-        string folderPath = Path.Combine(Application.dataPath, "StreamingAssets", "Mods"); // The folder path relative to "Resources"
-        TextAsset[] jsonAssets = Resources.LoadAll<TextAsset>(folderPath);
+        // Debug.Log(Application.persistentDataPath);
+        // Path to the StreamingAssets folder
+        string projectPath = Application.dataPath;
 
-        foreach (string dir in Directory.GetDirectories(folderPath))
+        // Path to the Mods folder within StreamingAssets
+        string modsFolderPath = Path.Combine(projectPath, "Mods");
+        Debug.Log(modsFolderPath);
+
+        // Check if the Mods folder exists
+        if (!Directory.Exists(modsFolderPath))
         {
-            foreach (string d in Directory.GetDirectories(dir))
-            {
-                ElementManager.instance.LoadElementsInMod(d);
-                RecipeManager.instance.LoadRecipesInMod(d);
-            }
+            //Debug.LogError("Mods folder not found in StreamingAssets.");
+            Directory.CreateDirectory(modsFolderPath);
+        }
+
+        // Get all subdirectories (each subdirectory represents a mod)
+        string[] modDirectories = Directory.GetDirectories(modsFolderPath);
+
+        if (modDirectories.Length == 0)
+        {
+            Debug.Log("No mod directories found.");
+            return;
+        }
+
+        foreach (string modDirectory in modDirectories)
+        {
+            // Debug.Log(modDirectory);
+            ElementManager.instance.LoadElementsInMod(modDirectory);
+            RecipeManager.instance.LoadRecipesInMod(modDirectory);
         }
     }
+
 }

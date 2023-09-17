@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 using UnityEngine.Animations;
 using TMPro;
@@ -18,8 +19,8 @@ public class MilestonesManager : MonoBehaviour
     private float timerStart;
     private float timerDuration = 4f;
     public List<Milestone> milestones;
-    List<Milestone> remainingMilestones = new();
-    List<Milestone> completedMilestones = new();
+    public List<Milestone> remainingMilestones = new();
+    public List<Milestone> completedMilestones = new();
 
     private bool isPlayingAnimation;
 
@@ -68,6 +69,15 @@ public class MilestonesManager : MonoBehaviour
     {
         if(milestone.GetCondition().isMet(GameManager.instance.worldElements))
         {
+            foreach (Milestone m in completedMilestones)
+            {
+                if (m == milestone)
+                {
+                    return;
+                }
+            }
+
+            // Debug.Log("reward!");
             UpdateSuccessUI(milestone);
             DisplayMilestonePopUp(milestone);
             GetReward(milestone);
@@ -81,7 +91,6 @@ public class MilestonesManager : MonoBehaviour
         milestone.IsCompleted = true;
         completedMilestones.Add(milestone);
         HoldMilestone(milestone);
-
     }
 
     void HoldMilestone(Milestone milestone)
@@ -109,7 +118,8 @@ public class MilestonesManager : MonoBehaviour
     {
         if (milestone.hasReward())
         {
-            GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f), true);
+            GameObject element = GameManager.instance.CreateElement(milestone.GetReward(), new Vector2(0f, 0f), true);
+            GameManager.instance.Release();
         }
     }
 

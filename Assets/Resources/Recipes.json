@@ -64,20 +64,10 @@
             "RecipeID": "campfire",
             "RecipeElements": [
                 "fire",
-                "tree"
+                "log"
             ],
             "RecipeOutputElements": [
                 "campfire"
-            ]
-        },
-        {
-            "RecipeID": "charcoal",
-            "RecipeElements": [
-                "log",
-                "fire"
-            ],
-            "RecipeOutputElements": [
-                "charcoal"
             ]
         },
         {
@@ -114,10 +104,30 @@
             "RecipeID": "advanced_tools",
             "RecipeElements": [
                 "plank",
-                "iron_ore"
+                "iron_ingot"
             ],
             "RecipeOutputElements": [
                 "advanced_tools"
+            ]
+        },
+        {
+            "RecipeID": "sand",
+            "RecipeElements": [
+                "soil",
+                "tools"
+            ],
+            "RecipeOutputElements": [
+                "sand"
+            ]
+        },
+        {
+            "RecipeID": "glass",
+            "RecipeElements": [
+                "sand",
+                "fire"
+            ],
+            "RecipeOutputElements": [
+                "glass"
             ]
         }
     ]

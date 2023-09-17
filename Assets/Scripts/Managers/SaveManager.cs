@@ -13,6 +13,7 @@ public class SaveManager : MonoBehaviour
         public Vector3 position;
     }
 
+    [System.Serializable]
     public struct MilestoneData
     {
         public string id;
@@ -31,6 +32,7 @@ public class SaveManager : MonoBehaviour
         public List<ElementData> elements = new List<ElementData>();
     }
 
+    [System.Serializable]
     public class MilestoneList
     {
         public List<MilestoneData> milestones = new List<MilestoneData>();
@@ -53,7 +55,7 @@ public class SaveManager : MonoBehaviour
         List<WorldElement> elements = GameManager.instance.worldElements;
         ElementsList elementsList = new ElementsList();
 
-        List<Milestone> milestones = MilestonesManager.instance.milestones;
+        List<Milestone> milestones = MilestonesManager.instance.completedMilestones;
         MilestoneList milestoneList = new MilestoneList();
 
         foreach (WorldElement element in elements)
@@ -68,11 +70,14 @@ public class SaveManager : MonoBehaviour
 
         foreach (Milestone milestone in milestones)
         {
-             milestoneList.milestones.Add(new MilestoneData(milestone.name, milestone.IsCompleted));
+            // Debug.Log(milestone.GetName() + " completed " + milestone.IsCompleted);
+            milestoneList.milestones.Add(new MilestoneData(milestone.name, milestone.IsCompleted));
         }
 
         string json = JsonUtility.ToJson(elementsList);
         string milestoneJson = JsonUtility.ToJson(milestoneList);
+
+        // Debug.Log(milestoneJson);
 
         PlayerPrefs.SetString("elementData", json);
         PlayerPrefs.Save();
@@ -90,14 +95,10 @@ public class SaveManager : MonoBehaviour
         elementsList = JsonUtility.FromJson<ElementsList>(json);
 
         MilestoneList milestoneList = JsonUtility.FromJson<MilestoneList>(PlayerPrefs.GetString("milestoneData")); //Retrieve milestones form playerpref in json and convert it back
-        
-
         foreach (ElementData element in elementsList.elements)
         {
             GameManager.instance.CreateElement(ElementManager.instance.GetElement(element.id), element.position, true);
         }
-
-
 
         foreach (MilestoneData milestoneData in milestoneList.milestones)
         {

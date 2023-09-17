@@ -68,7 +68,17 @@
         {
             "ElementName": "Advanced Tools",
             "ElementID": "advanced_tools",
-            "ElementSpriteSrc": "Advanced Tools"
+            "ElementSpriteSrc": "Advanced_Tools"
+        },
+        {
+            "ElementName": "Sand",
+            "ElementID": "sand",
+            "ElementSpriteSrc": "Sand"
+        },
+        {
+            "ElementName": "Glass",
+            "ElementID": "glass",
+            "ElementSpriteSrc": "Glass"
         }
     ]
 }

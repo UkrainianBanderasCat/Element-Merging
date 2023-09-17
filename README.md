@@ -12,7 +12,8 @@ An experimental game Element Merging by Lime Inc.
 8. Fire + Log = Campfire
 10. Tools + Rock = Iron Ore
 11. Iron Ore + Tools = Raw Iron
-
+12. Soil + Tools = Sand
+13. Sand + Fire = Glass
 ```
 ## ToDo list:
 

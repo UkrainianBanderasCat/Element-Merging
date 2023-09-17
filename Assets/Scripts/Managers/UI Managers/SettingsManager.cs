@@ -62,7 +62,7 @@ public class SettingsManager : MonoBehaviour
 
         UpdateSoundEffectsState();
 
-        versionText.text = "v" + Application.version;
+        versionText.text = "Alpha v" + Application.version;
     }
 
     void Update()

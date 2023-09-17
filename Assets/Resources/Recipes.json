@@ -104,7 +104,7 @@
             "RecipeID": "advanced_tools",
             "RecipeElements": [
                 "plank",
-                "iron_ore"
+                "iron_ingot"
             ],
             "RecipeOutputElements": [
                 "advanced_tools"

@@ -53,22 +53,22 @@
         {
             "ElementName": "Iron Ore",
             "ElementID": "iron_ore",
-            "ElementSpriteSrc": "Iron_Ore"
+            "ElementSpriteSrc": "Iron Ore"
         },
         {
             "ElementName": "Raw Iron",
             "ElementID": "raw_iron",
-            "ElementSpriteSrc": "Raw_Iron"
+            "ElementSpriteSrc": "Raw Iron"
         },
         {
             "ElementName": "Iron Ingot",
             "ElementID": "iron_ingot",
-            "ElementSpriteSrc": "Iron_Ingot"
+            "ElementSpriteSrc": "Iron Ingot"
         },
         {
             "ElementName": "Advanced Tools",
             "ElementID": "advanced_tools",
-            "ElementSpriteSrc": "Advanced_Tools"
+            "ElementSpriteSrc": "Advanced Tools"
         }
     ]
 }

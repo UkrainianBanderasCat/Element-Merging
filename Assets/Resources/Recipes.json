@@ -109,6 +109,26 @@
             "RecipeOutputElements": [
                 "advanced_tools"
             ]
+        },
+        {
+            "RecipeID": "sand",
+            "RecipeElements": [
+                "soil",
+                "tools"
+            ],
+            "RecipeOutputElements": [
+                "sand"
+            ]
+        },
+        {
+            "RecipeID": "glass",
+            "RecipeElements": [
+                "sand",
+                "fire"
+            ],
+            "RecipeOutputElements": [
+                "glass"
+            ]
         }
     ]
 }

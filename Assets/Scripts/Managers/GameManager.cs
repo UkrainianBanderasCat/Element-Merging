@@ -64,8 +64,9 @@ public class GameManager : MonoBehaviour
         Debug.developerConsoleVisible = true;
         ElementManager.instance.LoadElements();
         RecipeManager.instance.LoadRecipes();
-        ModManager.instance.InitMods();
-
+        #if !UNITY_ANDROID
+            ModManager.instance.InitMods();
+        #endif
         MilestonesManager.instance.InitMilestones();
         
         if (SaveManager.instance.HasSaveData())

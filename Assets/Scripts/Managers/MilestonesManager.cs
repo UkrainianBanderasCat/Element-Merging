@@ -92,8 +92,10 @@ public class MilestonesManager : MonoBehaviour
     public void UpdateList(Milestone milestone)
     {
         milestone.IsCompleted = true;
+
         if(milestone.UnlockedPanel != -1)
             unlockablePanels[milestone.UnlockedPanel].SetActive(true);
+
         completedMilestones.Add(milestone);
         HoldMilestone(milestone);
     }
@@ -103,7 +105,7 @@ public class MilestonesManager : MonoBehaviour
         heldMilestones.Add(milestone);
     }
 
-    void ReleaseMilestones()
+    public void ReleaseMilestones()
     {
         foreach(Milestone milestone in heldMilestones)
         {

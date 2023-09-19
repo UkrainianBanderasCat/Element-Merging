@@ -106,6 +106,7 @@ public class SaveManager : MonoBehaviour
         }
 
         GameManager.instance.Release();
+        MilestonesManager.instance.ReleaseMilestones();
     }
 
     public void ResetSaveData()

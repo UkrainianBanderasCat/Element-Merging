@@ -10,6 +10,11 @@ public class Recipe : ScriptableObject
     [SerializeField] private List<Element> RecipeElements;
     [SerializeField] private List<Element> RecipeOutputElements;
 
+    public Recipe()
+    {
+        Debug.Log("test");
+    }
+
     //Get
     public string GetID()
     {
@@ -27,7 +32,32 @@ public class Recipe : ScriptableObject
 
     public bool CanCraftWith(List<Element> elements) //Code I shamelessly stole from stackoverflow to check if two lists (of the same type) have exactly the same elements in any order for any size of list.
     {
-        var cnt = new Dictionary<Element, int>();
+        foreach(Element element in RecipeElements)
+        {
+            if (element.GetID().Contains("tag:"))
+            {
+                string tagID = "";
+                tagID = element.GetID().Replace("tag:", "");
+                List<string> taggedElementIDs = TagManager.instance.GetTag(tagID).GetReferenceElementIDs();
+                List<Element> taggedElements = new List<Element>();
+                foreach (string elementID in taggedElementIDs)
+                {
+                    taggedElements.Add(ElementManager.instance.GetElement(elementID));
+                }
+                if (contains(elements, taggedElements))
+                {
+                    continue;
+                }
+            }
+            if (elements.Contains(element))
+            {
+                continue;
+            }
+            return false;
+        }
+        return true;
+
+        /*var cnt = new Dictionary<Element, int>();
         foreach (Element s in RecipeElements)
         {
             if (cnt.ContainsKey(s))
@@ -50,7 +80,19 @@ public class Recipe : ScriptableObject
                 return false;
             }
         }
-        return cnt.Values.All(c => c == 0);
+        return cnt.Values.All(c => c == 0);*/
+    }
+
+    private bool contains(List<Element> a, List<Element> b)
+    {
+        foreach (Element e in a)
+        {
+            if (b.Contains(e))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     //Set

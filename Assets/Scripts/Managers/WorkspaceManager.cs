@@ -39,12 +39,12 @@ public class WorkspaceManager : MonoBehaviour
             worldElementsHolder.transform.Translate(Vector3.right * movementX * movementSpeed);
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f && size < max) // forward
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f && size < max) // forward
         {
             size += sizeChange;
             interactionNum += 0.1f;
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && size > min) // backwards
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f && size > min) // backwards
         {
             size -= sizeChange;
             interactionNum -= 0.1f;

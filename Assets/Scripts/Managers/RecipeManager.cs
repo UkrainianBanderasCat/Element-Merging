@@ -68,6 +68,7 @@ public class RecipeManager : MonoBehaviour
                 }
                 else
                 {
+                    recipeElements.Add(new Element(e));
                     //Debug.LogWarning("Element not found: " + e + " for recipe: " + loadedRecipe.RecipeID);
                 }
             }

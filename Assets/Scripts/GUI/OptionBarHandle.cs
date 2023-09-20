@@ -31,6 +31,10 @@ public class OptionBarHandle : MonoBehaviour
         }
     }
 
+    public void slide()
+    {
+        slideDirection = !slideDirection;
+    }
     public void slideOut()
     {
         slideDirection = true;

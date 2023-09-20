@@ -1255,6 +1255,7 @@ GameObject:
   - component: {fileID: 286932317}
   - component: {fileID: 286932321}
   - component: {fileID: 286932320}
+  - component: {fileID: 286932325}
   - component: {fileID: 286932319}
   - component: {fileID: 286932322}
   - component: {fileID: 286932323}
@@ -1334,6 +1335,8 @@ MonoBehaviour:
   milestones:
   - {fileID: 11400000, guid: 933dc7812d43d224ba354bef1803acf3, type: 2}
   - {fileID: 11400000, guid: 916171f7c4557494cb645db9f575d235, type: 2}
+  - {fileID: 11400000, guid: 1bcc282f451a263498360cbfb4f3966c, type: 2}
+  - {fileID: 11400000, guid: b98947cfc4e271d4e8c8c121394f88c0, type: 2}
   remainingMilestones: []
   completedMilestones: []
   unlockedElementNumber: 0
@@ -1405,6 +1408,23 @@ MonoBehaviour:
   size: 5
   min: 3.5
   max: 20
+--- !u!114 &286932325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286932316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b507c716e82cff43bbdb54d54ec8aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - {fileID: 11400000, guid: 23c3996bf84958a45bfcf1ace032cb3c, type: 2}
+  - {fileID: 11400000, guid: c5944cc61f2a81a47a4be1f464a91f92, type: 2}
+  - {fileID: 11400000, guid: 151366438fd98264bb9d6c439e03fd59, type: 2}
+  - {fileID: 11400000, guid: c2a2f999628f1794994bd7c63ff480c3, type: 2}
 --- !u!1 &296207015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,29 +1568,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 321669420}
           m_TargetAssemblyTypeName: OptionBarHandle, Assembly-CSharp
-          m_MethodName: slideOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 321669420}
-          m_TargetAssemblyTypeName: OptionBarHandle, Assembly-CSharp
-          m_MethodName: slideIn
+          m_MethodName: slide
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3794,7 +3798,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.8
+  m_fontSize: 29.7
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5688,7 +5692,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.4
+  m_fontSize: 28.55
   m_fontSizeBase: 110
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8418,7 +8422,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -12
   m_wordSpacing: -3.98
   m_lineSpacing: 0
   m_lineSpacingMax: 0

@@ -19,7 +19,7 @@ MonoBehaviour:
   MilestoneSprite: {fileID: 21300000, guid: 88de52c9af42cf8478a697982b1fec79, type: 3}
   ConditionType: 1
   NecessaryAmount: 0
-  SelectedElementID: campfire
+  SelectedElementID: basic_furnace
   SelectedElement: {fileID: 0}
   rewardID: iron_ore
   reward: {fileID: 0}

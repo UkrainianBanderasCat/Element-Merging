@@ -33,6 +33,23 @@ public class WorkspaceManager : MonoBehaviour
 #if UNITY_ANDROID
         HandleAndroidInput();
 #endif
+        float movementX = mouseX;
+        float movementY = mouseY;
+
+        // Apply movements to the object
+        worldElementsHolder.transform.Translate(Vector3.up * movementY * movementSpeed);
+        worldElementsHolder.transform.Translate(Vector3.right * movementX * movementSpeed);
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f && size < max) // forward
+        {
+            size += sizeChange;
+            interactionNum += 0.1f;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f && size > min) // backwards
+        {
+            size -= sizeChange;
+            interactionNum -= 0.1f;
+        }
 
         Camera.main.orthographicSize = size;
     }

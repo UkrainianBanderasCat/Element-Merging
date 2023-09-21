@@ -12,6 +12,7 @@ public class Milestone : ScriptableObject
     public string MilestoneDescription;
     public string MilestoneID;
     public Sprite MilestoneSprite;
+    public int UnlockedPanel;
 
 
     //Condition Managing

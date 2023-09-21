@@ -17,6 +17,7 @@ MonoBehaviour:
   MilestoneDescription: You have made every single Element there is!
   MilestoneID: 
   MilestoneSprite: {fileID: 0}
+  UnlockedPanel: 1
   ConditionType: 0
   NecessaryAmount: 23
   SelectedElementID: 

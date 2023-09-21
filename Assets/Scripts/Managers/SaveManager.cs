@@ -108,6 +108,7 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Load " + PlayerPrefs.GetString("milestoneData"));
 
         GameManager.instance.Release();
+        MilestonesManager.instance.ReleaseMilestones();
     }
 
     public void ResetSaveData()

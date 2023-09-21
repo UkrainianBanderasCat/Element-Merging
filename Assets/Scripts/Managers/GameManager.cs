@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI elementNameDisplay;
+    [SerializeField] private TextMeshProUGUI tipDisplay;
 
     // GUI Data
     public string elementNameDisplayText;
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     public AudioClip elementDropSound;
     public AudioClip elementMergeFailureSound;
     public bool playSoundEffects;
+
+    public int failureMergeCounter = 0;
 
     //Callback trace for the WorldElements (we can't add them in the foreach)
     public List<WorldElement> WaitingElements = new List<WorldElement>();
@@ -87,7 +90,6 @@ public class GameManager : MonoBehaviour
             // Matching Elements with Recipe
             if (recipe.CanCraftWith(elements))
             {
-
                 bool hasBeenDone = true;
 
                 foreach(Element element in recipe.GetRecipeOutputElements())
@@ -114,7 +116,11 @@ public class GameManager : MonoBehaviour
 
                 if (hasBeenDone)
                 {
-                    AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                    failureMergeCounter++;
+                    if (playSoundEffects)
+                    {
+                        AudioSource.PlayClipAtPoint(elementMergeFailureSound, new Vector2(0f, 0f), 0.4f);
+                    }
                     return;
                 }
 
@@ -129,10 +135,12 @@ public class GameManager : MonoBehaviour
                     AudioSource.PlayClipAtPoint(elementMergeSound, new Vector2(0f, 0f));
                 }
 
+                tipDisplay.text = "";
                 return;
             }
         }
 
+        failureMergeCounter++;
         SaveManager.instance.Save();
     }
 
@@ -204,6 +212,36 @@ public class GameManager : MonoBehaviour
             //    new Vector3(0.0f, -598.86f), Time.deltaTime * 20f);
             //--Old Code--
         }
+
+        if (failureMergeCounter == 10)
+        {
+            List<Recipe> availableRecipes = RecipeManager.instance.GetAvailableRecipes();
+
+            if (availableRecipes.Count > 0)
+            {
+                Recipe randomRecipe = availableRecipes[Random.Range(0, availableRecipes.Count)];
+
+                List<Element> inputElements = randomRecipe.GetRecipeElements();
+                string tipText = "Try ";
+
+                for (int i = 0; i < inputElements.Count; i++)
+                {
+                    if (i > 0)
+                    {
+                        tipText += " + ";
+                    }
+                    tipText += inputElements[i].GetName(); // Assuming GetName() returns the element name
+                }
+                tipDisplay.text = tipText;
+            }
+            else
+            {
+                Debug.Log("No available recipes to suggest.");
+            }
+
+            failureMergeCounter = 0;
+        }
+
         elementNameDisplay.text = elementNameDisplayText;
     }
 

@@ -221,6 +221,8 @@ public class GameManager : MonoBehaviour
 
         float pos = -(elementNamesCount / 2);
 
+        Debug.Log(pos);
+
         //Debug.Log(pos);
 
         int childCount = elementSpriteDisplayHolder.transform.childCount;

@@ -78,7 +78,7 @@ public class WorkspaceManager : MonoBehaviour
             {
                 Vector2 touchCurrentPos = touch1.position - touch2.position;
                 float deltaPinch = touchStartPos.magnitude - touchCurrentPos.magnitude;
-                size = Mathf.Clamp(initialSize + deltaPinch * sizeChange, min, max);
+                size = Mathf.Clamp(initialSize + deltaPinch * sizeChange / 5, min, max);
                 interactionNum += 0.1f;
             }
         }

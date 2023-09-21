@@ -16,11 +16,11 @@ MonoBehaviour:
   MilestoneName: Iron Ore
   MilestoneDescription: Time for an Upgrade!
   MilestoneID: 
-  MilestoneSprite: {fileID: 0}
+  MilestoneSprite: {fileID: 21300000, guid: 88de52c9af42cf8478a697982b1fec79, type: 3}
   UnlockedPanel: 0
   ConditionType: 1
   NecessaryAmount: 0
-  SelectedElementID: campfire
+  SelectedElementID: basic_furnace
   SelectedElement: {fileID: 0}
   rewardID: iron_ore
   reward: {fileID: 0}

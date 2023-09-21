@@ -85,7 +85,5 @@ public class MilestoneEditor : Editor
         }
 
         serializedObject.ApplyModifiedProperties();
-
-
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 public class ModManager : MonoBehaviour
 {
     public static ModManager instance;
-    private void Awake()
+    private ModManager()
     {
         instance = this;
     }

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e89450bd7f13b418362e6d3312fef1, type: 3}
   m_Name: fire
   m_EditorClassIdentifier: 
-  IsCompleted: 1
+  IsCompleted: 0
   MilestoneName: Fire!
-  MilestoneDescription: A whole new path!
+  MilestoneDescription: Time to merge with Heat!
   MilestoneID: five
-  MilestoneSprite: {fileID: 21300000, guid: 6cd55a26c70368b49a17a20e889d22c7, type: 3}
+  MilestoneSprite: {fileID: 21300000, guid: 31059f71481652f4b81b2b624a0aea24, type: 3}
   UnlockedPanel: -1
   ConditionType: 1
   NecessaryAmount: 0

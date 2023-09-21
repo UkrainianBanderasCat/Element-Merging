@@ -19,7 +19,6 @@ An experimental game Element Merging by Lime Inc.
 
 ### ToDo
 
-- [ ] Multiple elements in output
 
 - [ ] Add Main Menu
   - [ ] Play
@@ -32,14 +31,9 @@ An experimental game Element Merging by Lime Inc.
   - [ ] Volume control
   - [ ] Exit to Main Menu
 
-- [ ] Add modding feature
-
 ### In progress
 
-- [ ] Save system
-  - [x] Save created elements *by UkrainianBanderasCat*
-  - [ ] Save achivements
-  - [x] Save elements position *by UkrainianBanderasCat*
+
 
 - [ ] Create new elements
   - [x] Log
@@ -48,16 +42,23 @@ An experimental game Element Merging by Lime Inc.
   - [x] Tools
   - [ ] Lava
   - [x] Stone
-  - [ ] Campfire
+  - [x] Campfire
   - [ ] Charcoal
-  - [ ] Furnance
-  - [ ] Iron ore
-  - [ ] Raw Iron
-  - [ ] Iron Ingot
+  - [x] Furnance
+  - [X] Iron ore
+  - [x] Raw Iron
+  - [x] Iron Ingot
   - [x] Plank
 
 
 ### Completed
-
+- [x] Add modding feature
+      note : partial (not milestones yet)
+- [x] Save system
+  - [x] Save created elements *by UkrainianBanderasCat*
+  - [x] Save achivements
+  - [x] Save elements position *by UkrainianBanderasCat*
+- [x] Multiple elements in output
 - [x] Fix bug when elements can be placed out of workspace *by UkrainianBanderasCat*
 - [x] Fix bug with elements collision *by TheRiggedDev*
+

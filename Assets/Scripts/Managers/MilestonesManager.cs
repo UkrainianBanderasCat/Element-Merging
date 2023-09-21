@@ -70,7 +70,7 @@ public class MilestonesManager : MonoBehaviour
 
     private void ProcessMilestone(Milestone milestone)
     {
-        if(milestone.GetCondition().isMet(GameManager.instance.worldElements))
+        if (milestone.GetCondition().isMet(GameManager.instance.worldElements))
         {
             foreach (Milestone m in completedMilestones)
             {
@@ -79,8 +79,7 @@ public class MilestonesManager : MonoBehaviour
                     return;
                 }
             }
-
-            // Debug.Log("reward!");
+            
             UpdateSuccessUI(milestone);
             DisplayMilestonePopUp(milestone);
             GetReward(milestone);

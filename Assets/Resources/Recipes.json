@@ -23,7 +23,7 @@
         {
             "RecipeID": "rock",
             "RecipeElements": [
-                "fire",
+                "tag:fire",
                 "soil"
             ],
             "RecipeOutputElements": [
@@ -47,14 +47,15 @@
                 "rock"
             ],
             "RecipeOutputElements": [
-                "tools"
+                "basic_pickaxe",
+                "basic_axe"
             ]
         },
         {
             "RecipeID": "plank",
             "RecipeElements": [
                 "log",
-                "tools"
+                "basic_axe"
             ],
             "RecipeOutputElements": [
                 "plank"
@@ -63,7 +64,7 @@
         {
             "RecipeID": "campfire",
             "RecipeElements": [
-                "fire",
+                "tag:fire",
                 "log"
             ],
             "RecipeOutputElements": [
@@ -71,20 +72,10 @@
             ]
         },
         {
-            "RecipeID": "iron_ore",
-            "RecipeElements": [
-                "tools",
-                "rock"
-            ],
-            "RecipeOutputElements": [
-                "iron_ore"
-            ]
-        },
-        {
             "RecipeID": "raw_iron",
             "RecipeElements": [
                 "iron_ore",
-                "tools"
+                "tag:pickaxe"
             ],
             "RecipeOutputElements": [
                 "raw_iron"
@@ -93,7 +84,7 @@
         {
             "RecipeID": "iron_ingot",
             "RecipeElements": [
-                "fire",
+                "tag:furnace",
                 "raw_iron"
             ],
             "RecipeOutputElements": [
@@ -107,27 +98,68 @@
                 "iron_ingot"
             ],
             "RecipeOutputElements": [
-                "advanced_tools"
-            ]
-        },
-        {
-            "RecipeID": "sand",
-            "RecipeElements": [
-                "soil",
-                "tools"
-            ],
-            "RecipeOutputElements": [
-                "sand"
+                "advanced_pickaxe",
+                "advanced_axe"
             ]
         },
         {
             "RecipeID": "glass",
             "RecipeElements": [
                 "sand",
-                "fire"
+                "tag:fire"
             ],
             "RecipeOutputElements": [
                 "glass"
+            ]
+        },
+        {
+            "RecipeID": "glass_bottle",
+            "RecipeElements": [
+                "glass",
+                "advanced_pickaxe"
+            ],
+            "RecipeOutputElements": [
+                "glass_bottle"
+            ]
+        },
+        {
+            "RecipeID": "steam",
+            "RecipeElements": [
+                "tag:fire",
+                "water"
+            ],
+            "RecipeOutputElements": [
+                "steam"
+            ]
+        },
+        {
+            "RecipeID": "cloud",
+            "RecipeElements": [
+                "steam",
+                "water"
+            ],
+            "RecipeOutputElements": [
+                "cloud"
+            ]
+        },
+        {
+            "RecipeID": "cloud_bottle",
+            "RecipeElements": [
+                "cloud",
+                "glass_bottle"
+            ],
+            "RecipeOutputElements": [
+                "cloud_bottle"
+            ]
+        },
+        {
+            "RecipeID": "basic_furnace",
+            "RecipeElements": [
+                "campfire",
+                "rock"
+            ],
+            "RecipeOutputElements": [
+                "basic_furnace"
             ]
         },
 	{

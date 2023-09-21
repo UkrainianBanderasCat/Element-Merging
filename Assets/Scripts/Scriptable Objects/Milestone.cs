@@ -67,7 +67,6 @@ public class Milestone : ScriptableObject
 
     public void Init()
     {
-        IsCompleted = false;
         if (rewardID != "")reward = ElementManager.instance.GetElement(rewardID);
 
         {
@@ -87,8 +86,9 @@ public class Milestone : ScriptableObject
 
         if (SelectedElementID != "")
             SelectedElement = ElementManager.instance.GetElement(SelectedElementID);
-    
+
         // Debug.Log(GetName() + " completed " + IsCompleted);
+        IsCompleted = false;
     }
 
     void CreateCondition()

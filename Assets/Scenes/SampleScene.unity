@@ -1545,7 +1545,6 @@ MonoBehaviour:
   desc: {fileID: 1453491123}
   img: {fileID: 1222879223}
   milestones:
-  - {fileID: 11400000, guid: 933dc7812d43d224ba354bef1803acf3, type: 2}
   - {fileID: 11400000, guid: 916171f7c4557494cb645db9f575d235, type: 2}
   remainingMilestones: []
   completedMilestones: []
@@ -1834,10 +1833,10 @@ RectTransform:
   m_Father: {fileID: 401236289}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1100.5, y: -397.1}
-  m_SizeDelta: {x: 296, y: 100}
+  m_AnchorMin: {x: 0, y: 0.08946127}
+  m_AnchorMax: {x: 0.009327023, y: 0.17389792}
+  m_AnchoredPosition: {x: -144.5, y: 7.4000244}
+  m_SizeDelta: {x: 278, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &321669420
 MonoBehaviour:
@@ -5658,7 +5657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07263543, y: 0.20234713}
   m_AnchorMax: {x: 0.28336456, y: 0.8282612}
-  m_AnchoredPosition: {x: -0.5, y: -3}
+  m_AnchoredPosition: {x: -0.5000305, y: -3}
   m_SizeDelta: {x: 3, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1253837705
@@ -10302,7 +10301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.712581, y: 0.83541}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19.564209, y: 4.4470215}
+  m_AnchoredPosition: {x: 19.564087, y: 4.4469604}
   m_SizeDelta: {x: 37.615723, y: 15.619324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120890721

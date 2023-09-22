@@ -1309,6 +1309,7 @@ MonoBehaviour:
   elementMergeFailureSound: {fileID: 8300000, guid: 9e64930262795cc4d8a1d691d2d1e51c,
     type: 3}
   playSoundEffects: 0
+  failureMergeCounter: 0
   WaitingElements: []
   elementNames: []
   elementSpriteDisplay: []
@@ -7673,6 +7674,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   musicPlayer: {fileID: 633596397}
   defaultBackgroundColor: '#FFCF7A'
+  current_version: 
 --- !u!4 &1875832381
 Transform:
   m_ObjectHideFlags: 0

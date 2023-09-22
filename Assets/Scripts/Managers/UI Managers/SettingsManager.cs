@@ -18,6 +18,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AudioSource musicPlayer;
 
     [SerializeField] private string defaultBackgroundColor;
+    public string current_version = "";
     void Start()
     {
         //Load Background Color

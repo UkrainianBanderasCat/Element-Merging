@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 public class RecipeManager : MonoBehaviour
 {
 
@@ -133,4 +134,79 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
+    public List<Recipe> GetAvailableRecipes()
+    {
+        List<Recipe> availableRecipes = new List<Recipe>();
+
+        List<Element> elements = new List<Element>();
+
+        foreach (WorldElement worldElement in GameManager.instance.worldElements)
+        {
+            elements.Add(worldElement.GetElement());
+        }
+
+        foreach (Recipe recipe in RecipeManager.instance.recipes)
+        {
+            // Check if the recipe's output elements are already in the worldElements list
+            bool recipeCrafted = recipe.GetRecipeOutputElements().All(outputElement => elements.Contains(outputElement));
+
+            // If the recipe is already crafted, continue to the next recipe
+            if (recipeCrafted)
+            {
+                continue;
+            }
+
+            // Check if the player has the required elements (or tags) to craft the recipe
+            bool canCraftRecipe = true;
+
+            foreach (Element recipeElement in recipe.GetRecipeElements())
+            {
+                bool hasElementOrTag = false;
+
+                foreach (Element playerElement in elements)
+                {
+                    if (playerElement.GetID() == recipeElement.GetID())
+                    {
+                        hasElementOrTag = true;
+                        break;
+                    }
+                }
+
+                if (!hasElementOrTag)
+                {
+                    // Check if it's a tag and if the player has elements with that tag
+                    if (recipeElement.GetID().StartsWith("tag:"))
+                    {
+                        string tagID = recipeElement.GetID().Replace("tag:", "");
+                        if (TagManager.instance.GetTag(tagID) != null)
+                        {
+                            List<string> taggedElementIDs = TagManager.instance.GetTag(tagID).GetReferenceElementIDs();
+                            foreach (string elementID in taggedElementIDs)
+                            {
+                                if (elements.Any(element => element.GetID() == elementID))
+                                {
+                                    hasElementOrTag = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (!hasElementOrTag)
+                {
+                    canCraftRecipe = false;
+                    break;
+                }
+            }
+
+            if (canCraftRecipe)
+            {
+                //Debug.Log("Can craft " + recipe.GetID());
+                availableRecipes.Add(recipe);
+            }
+        }
+
+        return availableRecipes;
+    }
 }

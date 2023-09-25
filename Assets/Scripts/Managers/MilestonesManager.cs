@@ -24,7 +24,6 @@ public class MilestonesManager : MonoBehaviour
 
     private bool isPlayingAnimation;
 
-
     public List<GameObject> unlockablePanels = new();
 
     [SerializeField] private int unlockedElementNumber;
@@ -94,7 +93,7 @@ public class MilestonesManager : MonoBehaviour
 
         if(milestone.UnlockedPanel != -1)
             unlockablePanels[milestone.UnlockedPanel].SetActive(true);
-
+            
         completedMilestones.Add(milestone);
         HoldMilestone(milestone);
     }

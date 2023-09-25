@@ -33,22 +33,28 @@ public class WorkspaceManager : MonoBehaviour
 #if UNITY_ANDROID
         HandleAndroidInput();
 #endif
-        float movementX = mouseX;
-        float movementY = mouseY;
-
-        // Apply movements to the object
-        worldElementsHolder.transform.Translate(Vector3.up * movementY * movementSpeed);
-        worldElementsHolder.transform.Translate(Vector3.right * movementX * movementSpeed);
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f && size < max) // forward
+        if (Input.GetMouseButton(1))
         {
-            size += sizeChange;
-            interactionNum += 0.1f;
+            float movementX = Input.GetAxis("Mouse X");
+            float movementY = Input.GetAxis("Mouse Y");
+
+            // Apply movements to the object
+            worldElementsHolder.transform.Translate(Vector3.up * movementY * movementSpeed);
+            worldElementsHolder.transform.Translate(Vector3.right * movementX * movementSpeed);
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") > 0f && size > min) // backwards
+
+        if (Input.GetKey(KeyCode.LeftControl))
         {
-            size -= sizeChange;
-            interactionNum -= 0.1f;
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f && size < max) // forward
+            {
+                size += sizeChange;
+                interactionNum += 0.1f;
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0f && size > min) // backwards
+            {
+                size -= sizeChange;
+                interactionNum -= 0.1f;
+            }
         }
 
         Camera.main.orthographicSize = size;
@@ -72,7 +78,7 @@ public class WorkspaceManager : MonoBehaviour
             {
                 Vector2 touchCurrentPos = touch1.position - touch2.position;
                 float deltaPinch = touchStartPos.magnitude - touchCurrentPos.magnitude;
-                size = Mathf.Clamp(initialSize + deltaPinch * sizeChange, min, max);
+                size = Mathf.Clamp(initialSize + deltaPinch * sizeChange / 5, min, max);
                 interactionNum += 0.1f;
             }
         }

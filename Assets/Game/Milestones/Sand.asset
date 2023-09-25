@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e89450bd7f13b418362e6d3312fef1, type: 3}
   m_Name: Sand
   m_EditorClassIdentifier: 
-  IsCompleted: 1
+  IsCompleted: 0
   MilestoneName: Sand!
   MilestoneDescription: Useful Yellow Dust
   MilestoneID: 
   MilestoneSprite: {fileID: 21300000, guid: 912f9dc4f76495746ad3730cb44ea1d4, type: 3}
+  UnlockedPanel: 1
   ConditionType: 1
   NecessaryAmount: 0
   SelectedElementID: advanced_pickaxe

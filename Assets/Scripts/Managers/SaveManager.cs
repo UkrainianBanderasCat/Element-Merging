@@ -77,8 +77,6 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(elementsList);
         string milestoneJson = JsonUtility.ToJson(milestoneList);
 
-        Debug.Log("Save " + milestoneJson);
-
         PlayerPrefs.SetString("elementData", json);
         PlayerPrefs.Save();
 
@@ -105,7 +103,6 @@ public class SaveManager : MonoBehaviour
         {
             MilestonesManager.instance.UpdateList(MilestonesManager.instance.GetMilestoneByName(milestoneData.id));
         }
-        Debug.Log("Load " + PlayerPrefs.GetString("milestoneData"));
 
         GameManager.instance.Release();
         MilestonesManager.instance.ReleaseMilestones();

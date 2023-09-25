@@ -24,6 +24,7 @@ public class MilestoneEditor : Editor
     SerializedProperty SelectedElementsIDsProp;
     SerializedProperty SelectedElementsProp;
     SerializedProperty NeededMilestonesProp;
+    SerializedProperty UnlockedPanelProp;
 
     SerializedProperty UnlockedPanelProp;
 
@@ -48,9 +49,7 @@ public class MilestoneEditor : Editor
         SelectedElementsIDsProp = serializedObject.FindProperty("SelectedElementsIDs");
         SelectedElementsProp = serializedObject.FindProperty("SelectedElements");
         NeededMilestonesProp = serializedObject.FindProperty("NeededMilestones");
-
         UnlockedPanelProp = serializedObject.FindProperty("UnlockedPanel");
-
     }
 
     public override void OnInspectorGUI()

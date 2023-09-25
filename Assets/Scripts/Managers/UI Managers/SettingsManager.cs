@@ -18,6 +18,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AudioSource musicPlayer;
 
     [SerializeField] private string defaultBackgroundColor;
+    public string current_version = "";
     void Start()
     {
         //Load Background Color
@@ -62,7 +63,7 @@ public class SettingsManager : MonoBehaviour
 
         UpdateSoundEffectsState();
 
-        versionText.text = "Alpha v" + Application.version;
+        versionText.text = "v" + Application.version;
     }
 
     void Update()

@@ -49,6 +49,7 @@ public class Recipe : ScriptableObject
                     continue;
                 }
             }
+            
             if (elements.Contains(element))
             {
                 continue;
@@ -56,31 +57,6 @@ public class Recipe : ScriptableObject
             return false;
         }
         return true;
-
-        /*var cnt = new Dictionary<Element, int>();
-        foreach (Element s in RecipeElements)
-        {
-            if (cnt.ContainsKey(s))
-            {
-                cnt[s]++;
-            }
-            else
-            {
-                cnt.Add(s, 1);
-            }
-        }
-        foreach (Element s in elements)
-        {
-            if (cnt.ContainsKey(s))
-            {
-                cnt[s]--;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return cnt.Values.All(c => c == 0);*/
     }
 
     private bool contains(List<Element> a, List<Element> b)

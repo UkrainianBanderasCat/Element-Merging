@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e89450bd7f13b418362e6d3312fef1, type: 3}
   m_Name: Iron ore
   m_EditorClassIdentifier: 
-  IsCompleted: 1
+  IsCompleted: 0
   MilestoneName: Iron Ore
   MilestoneDescription: Time for an Upgrade!
   MilestoneID: 

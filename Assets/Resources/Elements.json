@@ -36,9 +36,14 @@
             "ElementSpriteSrc": "Log"
         },
         {
-            "ElementName": "Tools",
-            "ElementID": "tools",
-            "ElementSpriteSrc": "Tools"
+            "ElementName": "Basic Pickaxe",
+            "ElementID": "basic_pickaxe",
+            "ElementSpriteSrc": "Basic Pickaxe"
+        },
+        {
+            "ElementName": "Basic Axe",
+            "ElementID": "basic_axe",
+            "ElementSpriteSrc": "Basic Axe"
         },
         {
             "ElementName": "Plank",
@@ -66,9 +71,14 @@
             "ElementSpriteSrc": "Iron Ingot"
         },
         {
-            "ElementName": "Advanced Tools",
-            "ElementID": "advanced_tools",
-            "ElementSpriteSrc": "Advanced Tools"
+            "ElementName": "Advanced Pickaxe",
+            "ElementID": "advanced_pickaxe",
+            "ElementSpriteSrc": "Advanced Pickaxe"
+        },
+        {
+            "ElementName": "Advanced axe",
+            "ElementID": "advanced_axe",
+            "ElementSpriteSrc": "Advanced Axe"
         },
         {
             "ElementName": "Sand",
@@ -80,10 +90,31 @@
             "ElementID": "glass",
             "ElementSpriteSrc": "Glass"
         },
-{
-            "ElementName": "Chlorine",
-            "ElementID": "chlorine",
-            "ElementSpriteSrc": "Chlorine"
+
+        {
+            "ElementName": "Glass Bottle",
+            "ElementID": "glass_bottle",
+            "ElementSpriteSrc": "Glass Bottle"
+        },
+        {
+            "ElementName": "Steam",
+            "ElementID": "steam",
+            "ElementSpriteSrc": "Steam"
+        },
+        {
+            "ElementName": "Cloud",
+            "ElementID": "cloud",
+            "ElementSpriteSrc": "Cloud"
+        },
+        {
+            "ElementName": "Cloud in a Bottle",
+            "ElementID": "cloud_bottle",
+            "ElementSpriteSrc": "Bottle Of Cloud"
+        },
+        {
+            "ElementName": "Basic Furnace",
+            "ElementID": "basic_furnace",
+            "ElementSpriteSrc": "Basic Furnace"
         }
     ]
 }

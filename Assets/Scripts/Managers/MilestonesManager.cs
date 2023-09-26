@@ -91,6 +91,9 @@ public class MilestonesManager : MonoBehaviour
     {
         milestone.IsCompleted = true;
 
+        if(milestone.UnlockedPanel != -1)
+            unlockablePanels[milestone.UnlockedPanel].SetActive(true);
+            
         completedMilestones.Add(milestone);
         HoldMilestone(milestone);
     }
@@ -113,7 +116,7 @@ public class MilestonesManager : MonoBehaviour
     {
         achievementPanel.SetActive(true);
         isPlayingAnimation = true;
-        timerStart = Time.time;
+        timerStart = Time.time; 
         return;
     }
     private void GetReward(Milestone milestone)

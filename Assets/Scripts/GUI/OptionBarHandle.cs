@@ -44,4 +44,8 @@ public class OptionBarHandle : MonoBehaviour
         slideDirection = false;
     }
 
+    public void toggleSlide()
+    {
+        slideDirection = !slideDirection;
+    }
 }

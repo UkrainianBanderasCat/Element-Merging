@@ -14,8 +14,6 @@ public class Milestone : ScriptableObject
     public Sprite MilestoneSprite;
     public int UnlockedPanel;
 
-    public int UnlockedPanel;
-
     //Condition Managing
     public int ConditionType;
 

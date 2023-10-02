@@ -366,7 +366,8 @@ MonoBehaviour:
   m_text: Done
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
-  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
+  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -941,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6905233, y: 0.827}
   m_AnchorMax: {x: 0.97689706, y: 0.9768487}
-  m_AnchoredPosition: {x: -0.5, y: -1.0000153}
+  m_AnchoredPosition: {x: -0.5, y: -1}
   m_SizeDelta: {x: 11, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136891664
@@ -1130,7 +1131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 72, y: -757.8}
+  m_AnchoredPosition: {x: 72, y: -1020.0001}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198774031
@@ -3058,7 +3059,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4429,7 +4431,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
+  m_Sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270,
+    type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4732,7 +4735,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.75
+  m_fontSize: 29.65
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5377,7 +5380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.827}
   m_AnchorMax: {x: 0.5, y: 0.9768487}
-  m_AnchoredPosition: {x: 0, y: -1.0000153}
+  m_AnchoredPosition: {x: 0, y: -1}
   m_SizeDelta: {x: 0, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066989542
@@ -6000,7 +6003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 321.52, y: -757.8}
+  m_AnchoredPosition: {x: 321.52, y: -1020.0001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255751997
@@ -6267,10 +6270,10 @@ RectTransform:
   m_Father: {fileID: 1594312283}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184.00006, y: -404}
-  m_SizeDelta: {x: 368, y: 56}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -184.00006, y: 39}
+  m_SizeDelta: {x: 368, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308584400
 MonoBehaviour:
@@ -6604,7 +6607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -304, y: -757.8}
+  m_AnchoredPosition: {x: -304, y: -1020.0001}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380802039
@@ -6813,10 +6816,10 @@ RectTransform:
   m_Father: {fileID: 1594312283}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185.75998, y: -404}
-  m_SizeDelta: {x: 371.52, y: 56}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 185.75998, y: 38.99994}
+  m_SizeDelta: {x: 371.52, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417846824
 MonoBehaviour:
@@ -6841,7 +6844,8 @@ MonoBehaviour:
   m_text: v1.0.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
-  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
+  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7043,7 +7047,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.45
+  m_fontSize: 28.65
   m_fontSizeBase: 110
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7130,7 +7134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -58, y: -757.8}
+  m_AnchoredPosition: {x: -58, y: -1020.0001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466943832
@@ -7435,7 +7439,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7642,7 +7647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 203.76, y: -757.8}
+  m_AnchoredPosition: {x: 203.76, y: -1020}
   m_SizeDelta: {x: 103.5293, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573622970
@@ -7798,17 +7803,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=150%><b><color=#FFFFFF>About</color></b></size>\n<line-height=40%>\n\"I
-    don't know what to put here so imma just leave it empty\"\n</line-height>\n-
-    TheRiggedDev\n<line-height=100%>\n<size=150%><b><color=#FFFFFF>How to play?</color></b></size>\n</line-height>\nThe
-    game is pretty self explanatory but if you are unable\nto figure out what to
-    do then this is for you!\nYou start out with 2 elements as you can see. You can
-    select and drag these elements around. Drop an element on another in order to
-    merge them and discover a new element! If you don't what to merge with what,
-    then keep merging elements with other elements until you finally merge a new
-    element!\n<line-height=90%>\n<size=150%><b><color=#FFFFFF>Credits</color></b></size>\n</line-height>\n<line-height=-40%>\n<size=124%><i>The
+  m_text: "<size=150%><b><color=#FFFFFF>About</color></b></size>\n<line-height=100%>\nMulti
+    Merge is a game by Lime Inc. It may not have the most amount of content and may
+    not be the most polished game but it is we believe decently enjoyable. A nice
+    game to play when your bored. Once you finish this game, it's not over. You can
+    install mods. You can even make your own mods, It's really not hard. For more
+    information, Join our discord server or email us.\n<line-height=100%>\n<size=150%><b><color=#FFFFFF>How
+    to play?</color></b></size>\n</line-height>\nThe game is pretty self explanatory
+    but if you are unable\nto figure out what to do then this is for you!\nYou start
+    out with 2 elements as you can see. You can select and drag these elements around.
+    Drop an element on another in order to merge them and discover a new element!
+    If you don't what to merge with what, then keep merging elements with other elements
+    until you finally merge a new element!\n<line-height=90%>\n<size=150%><b><color=#FFFFFF>Credits</color></b></size>\n</line-height>\n<line-height=-40%>\n<size=124%><i>The
     Lime Inc Team</i></size>\n</line-height>\n<line-height=70%>\n Hecker, TheRiggedDev,
-    Antonin, JustMindful, octacore4F\n</line-height>"
+    Antonin, JustMindful, octacore4F\n</line-height>\n<line-height=-40%>\n<size=124%><i>Competetion
+    Winners</i></size>\n</line-height>\n<line-height=70%>\nFalcon2942\n</line-height>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
   m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768,
@@ -8298,8 +8307,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -162.45692}
-  m_SizeDelta: {x: 0, y: 324.9201}
+  m_AnchoredPosition: {x: 0, y: -293.3465}
+  m_SizeDelta: {x: 0, y: 586.6992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1597626962
 GameObject:
@@ -8516,7 +8525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -174, y: -757.8}
+  m_AnchoredPosition: {x: -174, y: -1020.0001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610099686
@@ -9238,7 +9247,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
-  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
+  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9997,7 +10007,8 @@ MonoBehaviour:
   m_text: Multimerger
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
-  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768, type: 2}
+  m_sharedMaterial: {fileID: -1049154575045565694, guid: ce7b5bec5ab31ed44885e76dcb006768,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

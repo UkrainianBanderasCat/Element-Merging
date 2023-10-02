@@ -26,8 +26,6 @@ public class MilestoneEditor : Editor
     SerializedProperty NeededMilestonesProp;
     SerializedProperty UnlockedPanelProp;
 
-    SerializedProperty UnlockedPanelProp;
-
     /*---------------------------------------------------------------------------*/
 
 
